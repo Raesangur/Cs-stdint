@@ -47,7 +47,7 @@ namespace stdint
         }
         public static int8_t operator ++(int8_t var1)                   /* ++ */
         {
-            return (var1.var++);
+            return new int8_t(var1.var++);
         }
         public static int8_t operator -(int8_t var1, int8_t var2)       /* - */
         {
@@ -55,7 +55,7 @@ namespace stdint
         }
         public static int8_t operator --(int8_t var1)                   /* -- */
         {
-            return (var1.var--);
+            return new int8_t(var1.var--);
         }
         public static int8_t operator *(int8_t var1, int8_t var2)       /* * */
         {
@@ -110,11 +110,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(int8_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator int8_t(uint8_t obj)
         {
             return new int8_t(obj);
@@ -182,11 +177,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(int8_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator int8_t(int16_t obj)
         {
             return new int8_t(obj);
@@ -254,11 +244,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(int8_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator int8_t(uint16_t obj)
         {
             return new int8_t(obj);
@@ -326,11 +311,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(int8_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator int8_t(int32_t obj)
         {
             return new int8_t(obj);
@@ -398,11 +378,6 @@ namespace stdint
         #endregion
         #region uint32_t
         /* Assignment */
-        public static implicit operator uint32_t(int8_t obj)
-        {
-            return new uint32_t(obj);
-        }
-
         public static implicit operator int8_t(uint32_t obj)
         {
             return new int8_t(obj);
@@ -470,11 +445,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(int8_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator int8_t(int64_t obj)
         {
             return new int8_t(obj);
@@ -543,11 +513,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(int8_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator int8_t(uint64_t obj)
         {
             return new int8_t(obj);
@@ -1365,11 +1330,6 @@ namespace stdint
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(uint8_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator uint8_t(int8_t obj)
         {
             return new uint8_t(obj);
@@ -1443,7 +1403,7 @@ namespace stdint
         }
         public static uint8_t operator ++(uint8_t var1)                 /* ++ */
         {
-            return (var1.var++);
+            return new uint8_t(var1.var++);
         }
         public static uint8_t operator -(uint8_t var1, uint8_t var2)    /* - */
         {
@@ -1451,7 +1411,7 @@ namespace stdint
         }
         public static uint8_t operator --(uint8_t var1)                 /* -- */
         {
-            return (var1.var--);
+            return new uint8_t(var1.var--);
         }
         public static uint8_t operator *(uint8_t var1, uint8_t var2)    /* * */
         {
@@ -1506,11 +1466,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(uint8_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator uint8_t(int16_t obj)
         {
             return new uint8_t(obj);
@@ -1578,11 +1533,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(uint8_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator uint8_t(uint16_t obj)
         {
             return new uint8_t(obj);
@@ -1650,11 +1600,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(uint8_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator uint8_t(int32_t obj)
         {
             return new uint8_t(obj);
@@ -1723,11 +1668,6 @@ namespace stdint
         #endregion
         #region uint32_t
         /* Assignment */
-        public static implicit operator uint32_t(uint8_t obj)
-        {
-            return new uint32_t(obj);
-        }
-
         public static implicit operator uint8_t(uint32_t obj)
         {
             return new uint8_t(obj);
@@ -1795,11 +1735,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(uint8_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator uint8_t(int64_t obj)
         {
             return new uint8_t(obj);
@@ -1867,11 +1802,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(uint8_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator uint8_t(uint64_t obj)
         {
             return new uint8_t(obj);
@@ -2690,11 +2620,6 @@ namespace stdint
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(int16_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator int16_t(int8_t obj)
         {
             return new int16_t(obj);
@@ -2762,11 +2687,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(int16_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator int16_t(uint8_t obj)
         {
             return new int16_t(obj);
@@ -2840,7 +2760,7 @@ namespace stdint
         }
         public static int16_t operator ++(int16_t obj)                  /* ++ */
         {
-            return (obj.var++);
+            return new int16_t(obj.var++);
         }
         public static int16_t operator -(int16_t var1, int16_t var2)    /* - */
         {
@@ -2848,7 +2768,7 @@ namespace stdint
         }
         public static int16_t operator --(int16_t obj)
         {
-            return (obj.var--);
+            return new int16_t(obj.var--);
         }
         public static int16_t operator *(int16_t var1, int16_t var2)    /* * */
         {
@@ -2903,11 +2823,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(int16_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator int16_t(uint16_t obj)
         {
             return new int16_t(obj);
@@ -2975,11 +2890,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(int16_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator int16_t(int32_t obj)
         {
             return new int16_t(obj);
@@ -3047,11 +2957,6 @@ namespace stdint
         #endregion
         #region uint32_t
         /* Assignment */
-        public static implicit operator uint32_t(int16_t obj)
-        {
-            return new uint32_t(obj);
-        }
-
         public static implicit operator int16_t(uint32_t obj)
         {
             return new int16_t(obj);
@@ -3119,11 +3024,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(int16_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator int16_t(int64_t obj)
         {
             return new int16_t(obj);
@@ -3191,11 +3091,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(int16_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator int16_t(uint64_t obj)
         {
             return new int16_t(obj);
@@ -4013,11 +3908,6 @@ namespace stdint
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(uint16_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator uint16_t(int8_t obj)
         {
             return new uint16_t(obj);
@@ -4085,11 +3975,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(uint16_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator uint16_t(uint8_t obj)
         {
             return new uint16_t(obj);
@@ -4157,11 +4042,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(uint16_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator uint16_t(int16_t obj)
         {
             return new uint16_t(obj);
@@ -4235,7 +4115,7 @@ namespace stdint
         }
         public static uint16_t operator ++(uint16_t obj)
         {
-            return (obj.var++);
+            return new uint16_t(obj.var++);
         }
         public static uint16_t operator -(uint16_t var1, uint16_t var2) /* - */
         {
@@ -4243,7 +4123,7 @@ namespace stdint
         }
         public static uint16_t operator --(uint16_t obj)
         {
-            return (obj.var--);
+            return new uint16_t(obj.var--);
         }
         public static uint16_t operator *(uint16_t var1, uint16_t var2) /* * */
         {
@@ -4298,11 +4178,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(uint16_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator uint16_t(int32_t obj)
         {
             return new uint16_t(obj);
@@ -4370,11 +4245,6 @@ namespace stdint
         #endregion
         #region uint32_t
         /* Assignment */
-        public static implicit operator uint32_t(uint16_t obj)
-        {
-            return new uint32_t(obj);
-        }
-
         public static implicit operator uint16_t(uint32_t obj)
         {
             return new uint16_t(obj);
@@ -4442,11 +4312,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(uint16_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator uint16_t(int64_t obj)
         {
             return new uint16_t(obj);
@@ -4514,11 +4379,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(uint16_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator uint16_t(uint64_t obj)
         {
             return new uint16_t(obj);
@@ -5336,11 +5196,6 @@ namespace stdint
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(int32_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator int32_t(int8_t obj)
         {
             return new int32_t(obj);
@@ -5408,11 +5263,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(int32_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator int32_t(uint8_t obj)
         {
             return new int32_t(obj);
@@ -5480,11 +5330,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(int32_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator int32_t(int16_t obj)
         {
             return new int32_t(obj);
@@ -5552,11 +5397,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(int32_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator int32_t(uint16_t obj)
         {
             return new int32_t(obj);
@@ -5630,7 +5470,7 @@ namespace stdint
         }
         public static int32_t operator ++(int32_t obj)
         {
-            return (obj.var++);
+            return new int32_t(obj.var++);
         }
         public static int32_t operator -(int32_t var1, int32_t var2)    /* - */
         {
@@ -5638,7 +5478,7 @@ namespace stdint
         }
         public static int32_t operator --(int32_t obj)
         {
-            return (obj.var--);
+            return new int32_t(obj.var--);
         }
         public static int32_t operator *(int32_t var1, int32_t var2)    /* * */
         {
@@ -5693,11 +5533,6 @@ namespace stdint
         #endregion
         #region uint32_t
         /* Assignment */
-        public static implicit operator uint32_t(int32_t obj)
-        {
-            return new uint32_t(obj);
-        }
-
         public static implicit operator int32_t(uint32_t obj)
         {
             return new int32_t(obj);
@@ -5765,11 +5600,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(int32_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator int32_t(int64_t obj)
         {
             return new int32_t(obj);
@@ -5837,11 +5667,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(int32_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator int32_t(uint64_t obj)
         {
             return new int32_t(obj);
@@ -6659,11 +6484,6 @@ namespace stdint
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(uint32_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator uint32_t(int8_t obj)
         {
             return new uint32_t(obj);
@@ -6731,11 +6551,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(uint32_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator uint32_t(uint8_t obj)
         {
             return new uint32_t(obj);
@@ -6803,11 +6618,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(uint32_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator uint32_t(int16_t obj)
         {
             return new uint32_t(obj);
@@ -6875,11 +6685,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(uint32_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator uint32_t(uint16_t obj)
         {
             return new uint32_t(obj);
@@ -6947,11 +6752,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(uint32_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator uint32_t(int32_t obj)
         {
             return new uint32_t(obj);
@@ -7025,7 +6825,7 @@ namespace stdint
         }
         public static uint32_t operator ++(uint32_t obj)                /* ++ */
         {
-            return (obj.var++);
+            return new uint32_t(obj.var++);
         }
         public static uint32_t operator -(uint32_t var1, uint32_t var2) /* - */
         {
@@ -7033,7 +6833,7 @@ namespace stdint
         }
         public static uint32_t operator --(uint32_t obj)                /* -- */
         {
-            return (obj.var--);
+            return new uint32_t(obj.var--);
         }
         public static uint32_t operator *(uint32_t var1, uint32_t var2) /* * */
         {
@@ -7088,11 +6888,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(uint32_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator uint32_t(int64_t obj)
         {
             return new uint32_t(obj);
@@ -7160,11 +6955,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(uint32_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator uint32_t(uint64_t obj)
         {
             return new uint32_t(obj);
@@ -7978,16 +7768,10 @@ namespace stdint
         public int64_t(uint64_t value)  { var = (long)value.var; }
         #endregion
 
-
         #region types
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(int64_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator int64_t(int8_t obj)
         {
             return new int64_t(obj);
@@ -8055,11 +7839,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(int64_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator int64_t(uint8_t obj)
         {
             return new int64_t(obj);
@@ -8127,11 +7906,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(int64_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator int64_t(int16_t obj)
         {
             return new int64_t(obj);
@@ -8199,11 +7973,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(int64_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator int64_t(uint16_t obj)
         {
             return new int64_t(obj);
@@ -8271,11 +8040,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(int64_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator int64_t(int32_t obj)
         {
             return new int64_t(obj);
@@ -8421,7 +8185,7 @@ namespace stdint
         }
         public static int64_t operator ++(int64_t obj)                  /* ++ */
         {
-            return (obj.var++);
+            return new int64_t(obj.var++);
         }
         public static int64_t operator -(int64_t var1, int64_t var2)    /* - */
         {
@@ -8429,7 +8193,7 @@ namespace stdint
         }
         public static int64_t operator --(int64_t obj)                  /* -- */
         {
-            return (obj.var--);
+            return new int64_t(obj.var--);
         }
         public static int64_t operator *(int64_t var1, int64_t var2)    /* * */
         {
@@ -8484,11 +8248,6 @@ namespace stdint
         #endregion
         #region uint64_t
         /* Assignment */
-        public static implicit operator uint64_t(int64_t obj)
-        {
-            return new uint64_t(obj);
-        }
-
         public static implicit operator int64_t(uint64_t obj)
         {
             return new int64_t(obj);
@@ -9306,11 +9065,6 @@ namespace stdint
         #region new types
         #region int8_t
         /* Assignment */
-        public static implicit operator int8_t(uint64_t obj)
-        {
-            return new int8_t(obj);
-        }
-
         public static implicit operator uint64_t(int8_t obj)
         {
             return new uint64_t(obj);
@@ -9378,11 +9132,6 @@ namespace stdint
         #endregion
         #region uint8_t
         /* Assignment */
-        public static implicit operator uint8_t(uint64_t obj)
-        {
-            return new uint8_t(obj);
-        }
-
         public static implicit operator uint64_t(uint8_t obj)
         {
             return new uint64_t(obj);
@@ -9450,11 +9199,6 @@ namespace stdint
         #endregion
         #region int16_t
         /* Assignment */
-        public static implicit operator int16_t(uint64_t obj)
-        {
-            return new int16_t(obj);
-        }
-
         public static implicit operator uint64_t(int16_t obj)
         {
             return new uint64_t(obj);
@@ -9522,11 +9266,6 @@ namespace stdint
         #endregion
         #region uint16_t
         /* Assignment */
-        public static implicit operator uint16_t(uint64_t obj)
-        {
-            return new uint16_t(obj);
-        }
-
         public static implicit operator uint64_t(uint16_t obj)
         {
             return new uint64_t(obj);
@@ -9594,11 +9333,6 @@ namespace stdint
         #endregion
         #region int32_t
         /* Assignment */
-        public static implicit operator int32_t(uint64_t obj)
-        {
-            return new int32_t(obj);
-        }
-
         public static implicit operator uint64_t(int32_t obj)
         {
             return new uint64_t(obj);
@@ -9666,11 +9400,6 @@ namespace stdint
         #endregion
         #region uint32_t
         /* Assignment */
-        public static implicit operator uint32_t(uint64_t obj)
-        {
-            return new uint32_t(obj);
-        }
-
         public static implicit operator uint64_t(uint32_t obj)
         {
             return new uint64_t(obj);
@@ -9738,11 +9467,6 @@ namespace stdint
         #endregion
         #region int64_t
         /* Assignment */
-        public static implicit operator int64_t(uint64_t obj)
-        {
-            return new int64_t(obj);
-        }
-
         public static implicit operator uint64_t(int64_t obj)
         {
             return new uint64_t(obj);
@@ -9816,7 +9540,7 @@ namespace stdint
         }
         public static uint64_t operator ++(uint64_t obj)                /* ++ */
         {
-            return (obj.var++);
+            return new uint64_t(obj.var++);
         }
         public static uint64_t operator -(uint64_t var1, uint64_t var2) /* - */
         {
@@ -9824,7 +9548,7 @@ namespace stdint
         }
         public static uint64_t operator --(uint64_t obj)                /* -- */
         {
-            return (obj.var--);
+            return new uint64_t(obj.var--);
         }
         public static uint64_t operator *(uint64_t var1, uint64_t var2) /* * */
         {
