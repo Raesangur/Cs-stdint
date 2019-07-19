@@ -1296,6 +1296,15 @@ namespace stdint
         {
             return var.ToString();
         }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
+        }
         #endregion
     }
 
@@ -2584,6 +2593,15 @@ namespace stdint
         public override string ToString()
         {
             return var.ToString();
+        }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
         }
         #endregion
     }
@@ -3874,6 +3892,15 @@ namespace stdint
         {
             return var.ToString();
         }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
+        }
         #endregion
     }
 
@@ -5161,6 +5188,15 @@ namespace stdint
         public override string ToString()
         {
             return var.ToString();
+        }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
         }
         #endregion
     }
@@ -7738,6 +7774,15 @@ namespace stdint
         {
             return base.GetHashCode();
         }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
+        }
         #endregion
     }
 
@@ -9031,6 +9076,15 @@ namespace stdint
         {
             return base.GetHashCode();
         }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
+        }
         #endregion
     }
 
@@ -10318,6 +10372,15 @@ namespace stdint
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public void Increment()
+        {
+            this.var++;
+        }
+        public void Decrement()
+        {
+            this.var--;
         }
         #endregion
     }
