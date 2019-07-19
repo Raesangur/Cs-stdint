@@ -5,6 +5,13 @@
 
 /*****************************************************************************/
 /* TODO:
+ * - Add, Substract, Divide, Multiply, Modulo, AND, OR, XOR, non-static
+ *      - int16_t 
+ *      - uint16_t
+ *      - int32_t
+ *      - uint32_t
+ *      - int64_t
+ *      - uint64_t
  * - test functionalities 
  * */
 
@@ -40,22 +47,80 @@ namespace stdint
         #region types
         #region new types
         #region int8_t
+        /* Unary operators */
+        public static int8_t operator ++(int8_t obj)                    /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static int8_t operator --(int8_t obj)                    /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static int8_t operator -(int8_t obj)                     /* - (unary) */
+        {
+            return new int8_t(-obj.var);
+        }
+        public static int8_t operator +(int8_t obj)                     /* + (unary) */
+        {
+            return new int8_t(obj);
+        }
+        public static int8_t operator ~(int8_t obj)                     /* ~ */
+        {
+            return new int8_t(~obj.var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(int8_t val)                                   /* Addition */
+        {
+            this.var += val.var;
+            return this;
+        }
+        public int8_t Substract(int8_t val)                             /* Substraction */
+        {
+            this.var -= val.var;
+            return this;
+        }
+        public int8_t Multiply(int8_t val)                              /* Multiplication */
+        {
+            this.var *= val.var;
+            return this;
+        }
+        public int8_t Divide(int8_t val)                                /* Division */
+        {
+            this.var /= val.var;
+            return this;
+        }
+        public int8_t Modulo(int8_t val)                                /* Modulo */
+        {
+            this.var %= val.var;
+            return this;
+        }
+        public int8_t AND(int8_t val)                                   /* Bitwise AND operation */
+        {
+            this.var &= val.var;
+            return this;
+        }
+        public int8_t OR(int8_t val)                                    /* Bitwise OR operation */
+        {
+            this.var |= val.var;
+            return this;
+        }
+        public int8_t XOR(int8_t val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= val.var;
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, int8_t var2)       /* + */
         {
             return new int8_t(var1.var + var2.var);
         }
-        public static int8_t operator ++(int8_t var1)                   /* ++ */
-        {
-            return new int8_t(var1.var++);
-        }
         public static int8_t operator -(int8_t var1, int8_t var2)       /* - */
         {
             return new int8_t(var1.var - var2.var);
-        }
-        public static int8_t operator --(int8_t var1)                   /* -- */
-        {
-            return new int8_t(var1.var--);
         }
         public static int8_t operator *(int8_t var1, int8_t var2)       /* * */
         {
@@ -113,6 +178,48 @@ namespace stdint
         public static implicit operator int8_t(uint8_t obj)
         {
             return new int8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(uint8_t val)                                  /* Addition */
+        {
+            this.var = (sbyte)(this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(uint8_t val)                            /* Substraction */
+        {
+            this.var = (sbyte)(this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(uint8_t val)                             /* Multiplication */
+        {
+            this.var = (sbyte)(this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(uint8_t val)                               /* Division */
+        {
+            this.var = (sbyte)(this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(uint8_t val)                               /* Modulo */
+        {
+            this.var = (sbyte)(this.var % val.var);
+            return this;
+        }
+        public int8_t AND(uint8_t val)                                  /* Bitwise AND operation */
+        {
+            this.var = (sbyte)(this.var & val.var);
+            return this;
+        }
+        public int8_t OR(uint8_t val)                                   /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((byte)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(uint8_t val)                                  /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -182,6 +289,48 @@ namespace stdint
             return new int8_t(obj);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(int16_t val)                                  /* Addition */
+        {
+            this.var = (sbyte)(this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(int16_t val)                            /* Substraction */
+        {
+            this.var = (sbyte)(this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(int16_t val)                             /* Multiplication */
+        {
+            this.var = (sbyte)(this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(int16_t val)                               /* Division */
+        {
+            this.var = (sbyte)(this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(int16_t val)                               /* Modulo */
+        {
+            this.var = (sbyte)(this.var % val.var);
+            return this;
+        }
+        public int8_t AND(int16_t val)                                  /* Bitwise AND operation */
+        {
+            this.var = (sbyte)(this.var & val.var);
+            return this;
+        }
+        public int8_t OR(int16_t val)                                   /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((short)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(int16_t val)                                  /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, int16_t var2)      /* + */
         {
@@ -247,6 +396,48 @@ namespace stdint
         public static implicit operator int8_t(uint16_t obj)
         {
             return new int8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(uint16_t val)                                 /* Addition */
+        {
+            this.var = (sbyte)(this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(uint16_t val)                           /* Substraction */
+        {
+            this.var = (sbyte)(this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(uint16_t val)                            /* Multiplication */
+        {
+            this.var = (sbyte)(this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(uint16_t val)                              /* Division */
+        {
+            this.var = (sbyte)(this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(uint16_t val)                              /* Modulo */
+        {
+            this.var = (sbyte)(this.var % val.var);
+            return this;
+        }
+        public int8_t AND(uint16_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (sbyte)(this.var & val.var);
+            return this;
+        }
+        public int8_t OR(uint16_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((byte)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(uint16_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -316,6 +507,48 @@ namespace stdint
             return new int8_t(obj);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(int32_t val)                                  /* Addition */
+        {
+            this.var = (sbyte)(this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(int32_t val)                            /* Substraction */
+        {
+            this.var = (sbyte)(this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(int32_t val)                             /* Multiplication */
+        {
+            this.var = (sbyte)(this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(int32_t val)                               /* Division */
+        {
+            this.var = (sbyte)(this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(int32_t val)                               /* Modulo */
+        {
+            this.var = (sbyte)(this.var % val.var);
+            return this;
+        }
+        public int8_t AND(int32_t val)                                  /* Bitwise AND operation */
+        {
+            this.var = (sbyte)(this.var & val.var);
+            return this;
+        }
+        public int8_t OR(int32_t val)                                   /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((byte)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(int32_t val)                                  /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, int32_t var2)      /* + */
         {
@@ -381,6 +614,48 @@ namespace stdint
         public static implicit operator int8_t(uint32_t obj)
         {
             return new int8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(uint32_t val)                                 /* Addition */
+        {
+            this.var = (sbyte)(this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(uint32_t val)                           /* Substraction */
+        {
+            this.var = (sbyte)(this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(uint32_t val)                            /* Multiplication */
+        {
+            this.var = (sbyte)(this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(uint32_t val)                              /* Division */
+        {
+            this.var = (sbyte)(this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(uint32_t val)                              /* Modulo */
+        {
+            this.var = (sbyte)(this.var % val.var);
+            return this;
+        }
+        public int8_t AND(uint32_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (sbyte)(this.var & val.var);
+            return this;
+        }
+        public int8_t OR(uint32_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((byte)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(uint32_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -450,6 +725,48 @@ namespace stdint
             return new int8_t(obj);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(int64_t val)                                  /* Addition */
+        {
+            this.var = (sbyte)(this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(int64_t val)                            /* Substraction */
+        {
+            this.var = (sbyte)(this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(int64_t val)                             /* Multiplication */
+        {
+            this.var = (sbyte)(this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(int64_t val)                               /* Division */
+        {
+            this.var = (sbyte)(this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(int64_t val)                               /* Modulo */
+        {
+            this.var = (sbyte)(this.var % val.var);
+            return this;
+        }
+        public int8_t AND(int64_t val)                                  /* Bitwise AND operation */
+        {
+            this.var = (sbyte)(this.var & val.var);
+            return this;
+        }
+        public int8_t OR(int64_t val)                                   /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((byte)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(int64_t val)                                  /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, int64_t var2)      /* + */
         {
@@ -516,6 +833,48 @@ namespace stdint
         public static implicit operator int8_t(uint64_t obj)
         {
             return new int8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(uint64_t val)                                 /* Addition */
+        {
+            this.var = (sbyte)((byte)this.var + val.var);
+            return this;
+        }
+        public int8_t Substract(uint64_t val)                           /* Substraction */
+        {
+            this.var = (sbyte)((byte)this.var - val.var);
+            return this;
+        }
+        public int8_t Multiply(uint64_t val)                            /* Multiplication */
+        {
+            this.var = (sbyte)((byte)this.var * val.var);
+            return this;
+        }
+        public int8_t Divide(uint64_t val)                              /* Division */
+        {
+            this.var = (sbyte)((byte)this.var / val.var);
+            return this;
+        }
+        public int8_t Modulo(uint64_t val)                              /* Modulo */
+        {
+            this.var = (sbyte)((byte)this.var % val.var);
+            return this;
+        }
+        public int8_t AND(uint64_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (sbyte)((byte)this.var & val.var);
+            return this;
+        }
+        public int8_t OR(uint64_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (sbyte)((byte)this.var | val.var);
+            return this;
+        }
+        public int8_t XOR(uint64_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (sbyte)((byte)this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -593,6 +952,48 @@ namespace stdint
             return new int8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(sbyte val)                                    /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Substract(sbyte val)                              /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(sbyte val)                               /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Divide(sbyte val)                                 /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(sbyte val)                                 /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t AND(sbyte val)                                    /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t OR(sbyte val)                                     /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t XOR(sbyte val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, sbyte var2)        /* + */
         {
@@ -663,6 +1064,48 @@ namespace stdint
         public static implicit operator int8_t(byte var)
         {
             return new int8_t(var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(byte val)                                     /* Addition */
+        {                                                               
+            this.var += (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Substract(byte val)                               /* Substraction */
+        {                                                               
+            this.var -= (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(byte val)                                /* Multiplication */
+        {                                                               
+            this.var *= (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Divide(byte val)                                  /* Division */
+        {                                                               
+            this.var /= (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(byte val)                                  /* Modulo */
+        {                                                               
+            this.var %= (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t AND(byte val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t OR(byte val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= (sbyte)val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t XOR(byte val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
         }
 
         /* Math */
@@ -737,6 +1180,48 @@ namespace stdint
             return new int8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(short val)                                    /* Addition */
+        {
+            this.var += (sbyte)val;
+            return this;
+        }
+        public int8_t Substract(short val)                              /* Substraction */
+        {
+            this.var -= (sbyte)val;
+            return this;
+        }
+        public int8_t Multiply(short val)                               /* Multiplication */
+        {
+            this.var *= (sbyte)val;
+            return this;
+        }
+        public int8_t Divide(short val)                                 /* Division */
+        {
+            this.var /= (sbyte)val;
+            return this;
+        }
+        public int8_t Modulo(short val)                                 /* Modulo */
+        {
+            this.var %= (sbyte)val;
+            return this;
+        }
+        public int8_t AND(short val)                                    /* Bitwise AND operation */
+        {
+            this.var &= (sbyte)val;
+            return this;
+        }
+        public int8_t OR(short val)                                     /* Bitwise OR operation */
+        {
+            this.var |= (sbyte)val;
+            return this;
+        }
+        public int8_t XOR(short val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, short var2)        /* + */
         {
@@ -807,6 +1292,48 @@ namespace stdint
         public static implicit operator int8_t(ushort var)
         {
             return new int8_t(var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(ushort val)                                   /* Addition */
+        {
+            this.var += (sbyte)val;
+            return this;
+        }
+        public int8_t Substract(ushort val)                             /* Substraction */
+        {
+            this.var -= (sbyte)val;
+            return this;
+        }
+        public int8_t Multiply(ushort val)                              /* Multiplication */
+        {
+            this.var *= (sbyte)val;
+            return this;
+        }
+        public int8_t Divide(ushort val)                                /* Division */
+        {
+            this.var /= (sbyte)val;
+            return this;
+        }
+        public int8_t Modulo(ushort val)                                /* Modulo */
+        {
+            this.var %= (sbyte)val;
+            return this;
+        }
+        public int8_t AND(ushort val)                                   /* Bitwise AND operation */
+        {
+            this.var &= (sbyte)val;
+            return this;
+        }
+        public int8_t OR(ushort val)                                    /* Bitwise OR operation */
+        {
+            this.var |= (sbyte)val;
+            return this;
+        }
+        public int8_t XOR(ushort val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
         }
 
         /* Math */
@@ -881,6 +1408,48 @@ namespace stdint
             return new int8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(int val)                                      /* Addition */
+        {                                                               
+            this.var += (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Substract(int val)                                /* Substraction */
+        {                                                               
+            this.var -= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(int val)                                 /* Multiplication */
+        {                                                               
+            this.var *= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Divide(int val)                                   /* Division */
+        {                                                               
+            this.var /= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(int val)                                   /* Modulo */
+        {                                                               
+            this.var %= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t AND(int val)                                      /* Bitwise AND operation */
+        {                                                               
+            this.var &= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t OR(int val)                                       /* Bitwise OR operation */
+        {                                                               
+            this.var |= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t XOR(int val)                                      /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, int var2)          /* + */
         {
@@ -913,6 +1482,14 @@ namespace stdint
         public static int8_t operator ^(int8_t var1, int var2)          /* ^ */
         {
             return new int8_t(var1.var ^ var2);
+        }
+        public static int8_t operator >>(int8_t var1, int var2)         /* >> */
+        {
+            return new int8_t(var1.var >> var2);
+        }
+        public static int8_t operator <<(int8_t var1, int var2)         /* << */
+        {
+            return new int8_t(var1.var << var2);
         }
 
         /* Comparison */
@@ -951,6 +1528,48 @@ namespace stdint
         public static implicit operator int8_t(uint var)
         {
             return new int8_t(var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(uint val)                                     /* Addition */
+        {
+            this.var += (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Substract(uint val)                               /* Substraction */
+        {                                                               
+            this.var -= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(uint val)                                /* Multiplication */
+        {                                                               
+            this.var *= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Divide(uint val)                                  /* Division */
+        {                                                               
+            this.var /= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(uint val)                                  /* Modulo */
+        {                                                               
+            this.var %= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t AND(uint val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t OR(uint val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t XOR(uint val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
         }
 
         /* Math */
@@ -1025,6 +1644,48 @@ namespace stdint
             return new int8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(long val)                                     /* Addition */
+        {                                                               
+            this.var += (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Substract(long val)                               /* Substraction */
+        {                                                               
+            this.var -= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(long val)                                /* Multiplication */
+        {                                                               
+            this.var *= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Divide(long val)                                  /* Division */
+        {                                                               
+            this.var /= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(long val)                                  /* Modulo */
+        {                                                               
+            this.var %= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t AND(long val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t OR(long val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= (sbyte)val;                                     
+            return this;                                                
+        }                                                               
+        public int8_t XOR(long val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, long var2)         /* + */
         {
@@ -1097,6 +1758,48 @@ namespace stdint
             return new int8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(ulong val)                                    /* Addition */
+        {
+            this.var += (sbyte)val;
+            return this;
+        }
+        public int8_t Substract(ulong val)                              /* Substraction */
+        {
+            this.var -= (sbyte)val;
+            return this;
+        }
+        public int8_t Multiply(ulong val)                               /* Multiplication */
+        {
+            this.var *= (sbyte)val;
+            return this;
+        }
+        public int8_t Divide(ulong val)                                 /* Division */
+        {
+            this.var /= (sbyte)val;
+            return this;
+        }
+        public int8_t Modulo(ulong val)                                 /* Modulo */
+        {
+            this.var %= (sbyte)val;
+            return this;
+        }
+        public int8_t AND(ulong val)                                    /* Bitwise AND operation */
+        {
+            this.var &= (sbyte)val;
+            return this;
+        }
+        public int8_t OR(ulong val)                                     /* Bitwise OR operation */
+        {
+            this.var |= (sbyte)val;
+            return this;
+        }
+        public int8_t XOR(ulong val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (sbyte)val;
+            return this;
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, ulong var2)        /* + */
         {
@@ -1159,6 +1862,45 @@ namespace stdint
         #endregion
 
         #region float
+        /* Non-static math operations */
+        public int8_t Add(float val)                                    /* Addition */
+        {
+            this.var += System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Substract(float val)                              /* Substraction */
+        {
+            this.var -= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Multiply(float val)                               /* Multiplication */
+        {
+            this.var *= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Divide(float val)                                 /* Division */
+        {
+            this.var /= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Modulo(float val)                                 /* Modulo */
+        {
+            this.var %= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t AND(float val)                                    /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with float parameter {0}", val));
+        }
+        public int8_t OR(float val)                                     /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with float parameter {0}", val));
+        }
+        public int8_t XOR(float val)                                    /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with float parameter {0}", val));
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, float var2)        /* + */
         {
@@ -1220,6 +1962,45 @@ namespace stdint
         }
         #endregion
         #region double
+        /* Non-static math operations */
+        public int8_t Add(double val)                                   /* Addition */
+        {
+            this.var += System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Substract(double val)                             /* Substraction */
+        {
+            this.var -= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Multiply(double val)                              /* Multiplication */
+        {
+            this.var *= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Divide(double val)                                /* Division */
+        {
+            this.var /= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Modulo(double val)                                /* Modulo */
+        {
+            this.var %= System.Convert.ToSByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t AND(double val)                                   /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with double parameter {0}", val));
+        }
+        public int8_t OR(double val)                                    /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with double parameter {0}", val));
+        }
+        public int8_t XOR(double val)                                   /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with double parameter {0}", val));
+        }
+
         /* Math */
         public static int8_t operator +(int8_t var1, double var2)       /* + */
         {
@@ -1296,14 +2077,16 @@ namespace stdint
         {
             return var.ToString();
         }
-
-        public void Increment()
+        
+        public int8_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public int8_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
@@ -1342,6 +2125,48 @@ namespace stdint
         public static implicit operator uint8_t(int8_t obj)
         {
             return new uint8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint8_t Add(int8_t val)                                  /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(int8_t val)                            /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(int8_t val)                             /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(int8_t val)                               /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(int8_t val)                               /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(int8_t val)                                  /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(int8_t val)                                   /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(int8_t val)                                  /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -1405,22 +2230,80 @@ namespace stdint
         }
         #endregion
         #region uint8_t
+        /* Unary operators */
+        public static uint8_t operator ++(uint8_t obj)                  /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static uint8_t operator --(uint8_t obj)                  /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static uint8_t operator -(uint8_t obj)                   /* - (unary) */
+        {
+            return new uint8_t(-obj.var);
+        }
+        public static uint8_t operator +(uint8_t obj)                   /* + (unary) */
+        {
+            return new uint8_t(obj);
+        }
+        public static uint8_t operator ~(uint8_t obj)                   /* ~ */
+        {
+            return new uint8_t(~obj.var);
+        }
+
+        /* Non-static math operations */
+        public uint8_t Add(uint8_t val)                                 /* Addition */
+        {
+            this.var += val.var;
+            return this;
+        }
+        public uint8_t Substract(uint8_t val)                           /* Substraction */
+        {
+            this.var -= val.var;
+            return this;
+        }
+        public uint8_t Multiply(uint8_t val)                            /* Multiplication */
+        {
+            this.var *= val.var;
+            return this;
+        }
+        public uint8_t Divide(uint8_t val)                              /* Division */
+        {
+            this.var /= val.var;
+            return this;
+        }
+        public uint8_t Modulo(uint8_t val)                              /* Modulo */
+        {
+            this.var %= val.var;
+            return this;
+        }
+        public uint8_t AND(uint8_t val)                                 /* Bitwise AND operation */
+        {
+            this.var &= val.var;
+            return this;
+        }
+        public uint8_t OR(uint8_t val)                                  /* Bitwise OR operation */
+        {
+            this.var |= val.var;
+            return this;
+        }
+        public uint8_t XOR(uint8_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var ^= val.var;
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, uint8_t var2)    /* + */
         {
             return new uint8_t(var1.var + var2.var);
         }
-        public static uint8_t operator ++(uint8_t var1)                 /* ++ */
-        {
-            return new uint8_t(var1.var++);
-        }
         public static uint8_t operator -(uint8_t var1, uint8_t var2)    /* - */
         {
             return new uint8_t(var1.var - var2.var);
-        }
-        public static uint8_t operator --(uint8_t var1)                 /* -- */
-        {
-            return new uint8_t(var1.var--);
         }
         public static uint8_t operator *(uint8_t var1, uint8_t var2)    /* * */
         {
@@ -1478,6 +2361,48 @@ namespace stdint
         public static implicit operator uint8_t(int16_t obj)
         {
             return new uint8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint8_t Add(int16_t val)                                 /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(int16_t val)                           /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(int16_t val)                            /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(int16_t val)                              /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(int16_t val)                              /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(int16_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(int16_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(int16_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -1547,6 +2472,48 @@ namespace stdint
             return new uint8_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint8_t Add(uint16_t val)                                /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(uint16_t val)                          /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(uint16_t val)                           /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(uint16_t val)                             /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(uint16_t val)                             /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(uint16_t val)                                /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(uint16_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(uint16_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, uint16_t var2)   /* + */
         {
@@ -1612,6 +2579,48 @@ namespace stdint
         public static implicit operator uint8_t(int32_t obj)
         {
             return new uint8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint8_t Add(int32_t val)                                 /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(int32_t val)                           /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(int32_t val)                            /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(int32_t val)                              /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(int32_t val)                              /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(int32_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(int32_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(int32_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -1682,6 +2691,48 @@ namespace stdint
             return new uint8_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint8_t Add(uint32_t val)                                /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(uint32_t val)                          /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(uint32_t val)                           /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(uint32_t val)                             /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(uint32_t val)                             /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(uint32_t val)                                /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(uint32_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(uint32_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, uint32_t var2)   /* + */
         {
@@ -1749,6 +2800,48 @@ namespace stdint
             return new uint8_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint8_t Add(int64_t val)                                 /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(int64_t val)                           /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(int64_t val)                            /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(int64_t val)                              /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(int64_t val)                              /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(int64_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(int64_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(int64_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, int64_t var2)    /* + */
         {
@@ -1814,6 +2907,48 @@ namespace stdint
         public static implicit operator uint8_t(uint64_t obj)
         {
             return new uint8_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint8_t Add(uint64_t val)                                /* Addition */
+        {
+            this.var = (byte)(this.var + val.var);
+            return this;
+        }
+        public uint8_t Substract(uint64_t val)                          /* Substraction */
+        {
+            this.var = (byte)(this.var - val.var);
+            return this;
+        }
+        public uint8_t Multiply(uint64_t val)                           /* Multiplication */
+        {
+            this.var = (byte)(this.var * val.var);
+            return this;
+        }
+        public uint8_t Divide(uint64_t val)                             /* Division */
+        {
+            this.var = (byte)(this.var / val.var);
+            return this;
+        }
+        public uint8_t Modulo(uint64_t val)                             /* Modulo */
+        {
+            this.var = (byte)(this.var % val.var);
+            return this;
+        }
+        public uint8_t AND(uint64_t val)                                /* Bitwise AND operation */
+        {
+            this.var = (byte)(this.var & val.var);
+            return this;
+        }
+        public uint8_t OR(uint64_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = (byte)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint8_t XOR(uint64_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = (byte)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -1891,6 +3026,48 @@ namespace stdint
             return new uint8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(sbyte val)                                    /* Addition */
+        {
+            this.var += (byte)val;
+            return this;
+        }
+        public int8_t Substract(sbyte val)                              /* Substraction */
+        {
+            this.var -= (byte)val;
+            return this;
+        }
+        public int8_t Multiply(sbyte val)                               /* Multiplication */
+        {
+            this.var *= (byte)val;
+            return this;
+        }
+        public int8_t Divide(sbyte val)                                 /* Division */
+        {
+            this.var /= (byte)val;
+            return this;
+        }
+        public int8_t Modulo(sbyte val)                                 /* Modulo */
+        {
+            this.var %= (byte)val;
+            return this;
+        }
+        public int8_t AND(sbyte val)                                    /* Bitwise AND operation */
+        {
+            this.var &= (byte)val;
+            return this;
+        }
+        public int8_t OR(sbyte val)                                     /* Bitwise OR operation */
+        {
+            this.var |= (byte)val;
+            return this;
+        }
+        public int8_t XOR(sbyte val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, sbyte var2)      /* + */
         {
@@ -1961,6 +3138,48 @@ namespace stdint
         public static implicit operator uint8_t(byte var)
         {
             return new uint8_t(var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(byte val)                                     /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Substract(byte val)                               /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(byte val)                                /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Divide(byte val)                                  /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(byte val)                                  /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t AND(byte val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t OR(byte val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                            
+            return this;                                                
+        }                                                               
+        public int8_t XOR(byte val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
         }
 
         /* Math */
@@ -2035,6 +3254,48 @@ namespace stdint
             return new uint8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(short val)                                    /* Addition */
+        {
+            this.var += (byte)val;
+            return this;
+        }
+        public int8_t Substract(short val)                              /* Substraction */
+        {
+            this.var -= (byte)val;
+            return this;
+        }
+        public int8_t Multiply(short val)                               /* Multiplication */
+        {
+            this.var *= (byte)val;
+            return this;
+        }
+        public int8_t Divide(short val)                                 /* Division */
+        {
+            this.var /= (byte)val;
+            return this;
+        }
+        public int8_t Modulo(short val)                                 /* Modulo */
+        {
+            this.var %= (byte)val;
+            return this;
+        }
+        public int8_t AND(short val)                                    /* Bitwise AND operation */
+        {
+            this.var &= (byte)val;
+            return this;
+        }
+        public int8_t OR(short val)                                     /* Bitwise OR operation */
+        {
+            this.var |= (byte)val;
+            return this;
+        }
+        public int8_t XOR(short val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, short var2)      /* + */
         {
@@ -2105,6 +3366,48 @@ namespace stdint
         public static implicit operator uint8_t(ushort var)
         {
             return new uint8_t(var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(ushort val)                                   /* Addition */
+        {
+            this.var += (byte)val;
+            return this;
+        }
+        public int8_t Substract(ushort val)                             /* Substraction */
+        {
+            this.var -= (byte)val;
+            return this;
+        }
+        public int8_t Multiply(ushort val)                              /* Multiplication */
+        {
+            this.var *= (byte)val;
+            return this;
+        }
+        public int8_t Divide(ushort val)                                /* Division */
+        {
+            this.var /= (byte)val;
+            return this;
+        }
+        public int8_t Modulo(ushort val)                                /* Modulo */
+        {
+            this.var %= (byte)val;
+            return this;
+        }
+        public int8_t AND(ushort val)                                   /* Bitwise AND operation */
+        {
+            this.var &= (byte)val;
+            return this;
+        }
+        public int8_t OR(ushort val)                                    /* Bitwise OR operation */
+        {
+            this.var |= (byte)val;
+            return this;
+        }
+        public int8_t XOR(ushort val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
         }
 
         /* Math */
@@ -2179,6 +3482,48 @@ namespace stdint
             return new uint8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(int val)                                      /* Addition */
+        {                                                               
+            this.var += (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Substract(int val)                                /* Substraction */
+        {                                                               
+            this.var -= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(int val)                                 /* Multiplication */
+        {                                                               
+            this.var *= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Divide(int val)                                   /* Division */
+        {                                                               
+            this.var /= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(int val)                                   /* Modulo */
+        {                                                               
+            this.var %= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t AND(int val)                                      /* Bitwise AND operation */
+        {                                                               
+            this.var &= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t OR(int val)                                       /* Bitwise OR operation */
+        {                                                               
+            this.var |= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t XOR(int val)                                      /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, int var2)        /* + */
         {
@@ -2211,6 +3556,14 @@ namespace stdint
         public static uint8_t operator ^(uint8_t var1, int var2)        /* ^ */
         {
             return new uint8_t(var1.var ^ var2);
+        }
+        public static uint8_t operator >>(uint8_t var1, int var2)       /* >> */
+        {
+            return new uint8_t(var1.var >> var2);
+        }
+        public static uint8_t operator <<(uint8_t var1, int var2)       /* << */
+        {
+            return new uint8_t(var1.var << var2);
         }
 
         /* Comparison */
@@ -2249,6 +3602,48 @@ namespace stdint
         public static implicit operator uint8_t(uint var)
         {
             return new uint8_t(var);
+        }
+
+        /* Non-static math operations */
+        public int8_t Add(uint val)                                     /* Addition */
+        {                                                               
+            this.var += (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Substract(uint val)                               /* Substraction */
+        {                                                               
+            this.var -= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(uint val)                                /* Multiplication */
+        {                                                               
+            this.var *= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Divide(uint val)                                  /* Division */
+        {                                                               
+            this.var /= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(uint val)                                  /* Modulo */
+        {                                                               
+            this.var %= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t AND(uint val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t OR(uint val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t XOR(uint val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
         }
 
         /* Math */
@@ -2323,6 +3718,48 @@ namespace stdint
             return new uint8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(long val)                                     /* Addition */
+        {                                                               
+            this.var += (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Substract(long val)                               /* Substraction */
+        {                                                               
+            this.var -= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Multiply(long val)                                /* Multiplication */
+        {                                                               
+            this.var *= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Divide(long val)                                  /* Division */
+        {                                                               
+            this.var /= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t Modulo(long val)                                  /* Modulo */
+        {                                                               
+            this.var %= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t AND(long val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t OR(long val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int8_t XOR(long val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, long var2)       /* + */
         {
@@ -2395,6 +3832,48 @@ namespace stdint
             return new uint8_t(var);
         }
 
+        /* Non-static math operations */
+        public int8_t Add(ulong val)                                    /* Addition */
+        {
+            this.var += (byte)val;
+            return this;
+        }
+        public int8_t Substract(ulong val)                              /* Substraction */
+        {
+            this.var -= (byte)val;
+            return this;
+        }
+        public int8_t Multiply(ulong val)                               /* Multiplication */
+        {
+            this.var *= (byte)val;
+            return this;
+        }
+        public int8_t Divide(ulong val)                                 /* Division */
+        {
+            this.var /= (byte)val;
+            return this;
+        }
+        public int8_t Modulo(ulong val)                                 /* Modulo */
+        {
+            this.var %= (byte)val;
+            return this;
+        }
+        public int8_t AND(ulong val)                                    /* Bitwise AND operation */
+        {
+            this.var &= (byte)val;
+            return this;
+        }
+        public int8_t OR(ulong val)                                     /* Bitwise OR operation */
+        {
+            this.var |= (byte)val;
+            return this;
+        }
+        public int8_t XOR(ulong val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, ulong var2)      /* + */
         {
@@ -2457,6 +3936,45 @@ namespace stdint
         #endregion
 
         #region float
+        /* Non-static math operations */
+        public int8_t Add(float val)                                    /* Addition */
+        {
+            this.var += System.Convert.ToByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Substract(float val)                              /* Substraction */
+        {
+            this.var -= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t Multiply(float val)                               /* Multiplication */
+        {
+            this.var *= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t Divide(float val)                                 /* Division */
+        {
+            this.var /= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t Modulo(float val)                                 /* Modulo */
+        {
+            this.var %= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t AND(float val)                                    /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("& operator cannot be applied with float parameter {0}", val));
+        }
+        public int8_t OR(float val)                                     /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("| operator cannot be applied with float parameter {0}", val));
+        }
+        public int8_t XOR(float val)                                    /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("^ operator cannot be applied with float parameter {0}", val));
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, float var2)      /* + */
         {
@@ -2518,6 +4036,45 @@ namespace stdint
         }
         #endregion
         #region double
+        /* Non-static math operations */
+        public int8_t Add(double val)                                   /* Addition */
+        {
+            this.var += System.Convert.ToByte(System.Math.Truncate(val));
+            return this;
+        }
+        public int8_t Substract(double val)                             /* Substraction */
+        {
+            this.var -= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t Multiply(double val)                              /* Multiplication */
+        {
+            this.var *= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t Divide(double val)                                /* Division */
+        {
+            this.var /= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t Modulo(double val)                                /* Modulo */
+        {
+            this.var %= System.Convert.ToByte(System.Math.Truncate(val)); ;
+            return this;
+        }
+        public int8_t AND(double val)                                   /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("& operator cannot be applied with double parameter {0}", val));
+        }
+        public int8_t OR(double val)                                    /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("| operator cannot be applied with double parameter {0}", val));
+        }
+        public int8_t XOR(double val)                                   /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("^ operator cannot be applied with double parameter {0}", val));
+        }
+
         /* Math */
         public static uint8_t operator +(uint8_t var1, double var2)     /* + */
         {
@@ -2595,13 +4152,15 @@ namespace stdint
             return var.ToString();
         }
 
-        public void Increment()
+        public uint8_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public uint8_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
@@ -2771,22 +4330,38 @@ namespace stdint
         }
         #endregion
         #region int16_t
+        /* Unary operators */
+        public static int16_t operator ++(int16_t obj)                  /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static int16_t operator --(int16_t obj)                  /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static int16_t operator -(int16_t obj)                   /* - (unary) */
+        {
+            return new int16_t(-obj.var);
+        }
+        public static int16_t operator +(int16_t obj)                   /* + (unary) */
+        {
+            return new int16_t(obj);
+        }
+        public static int16_t operator ~(int16_t obj)                   /* ~ */
+        {
+            return new int16_t(~obj.var);
+        }
+
         /* Math */
         public static int16_t operator +(int16_t var1, int16_t var2)    /* + */
         {
             return new int16_t(var1.var + var2.var);
         }
-        public static int16_t operator ++(int16_t obj)                  /* ++ */
-        {
-            return new int16_t(obj.var++);
-        }
         public static int16_t operator -(int16_t var1, int16_t var2)    /* - */
         {
             return new int16_t(var1.var - var2.var);
-        }
-        public static int16_t operator --(int16_t obj)
-        {
-            return new int16_t(obj.var--);
         }
         public static int16_t operator *(int16_t var1, int16_t var2)    /* * */
         {
@@ -3510,6 +5085,14 @@ namespace stdint
         {
             return new int16_t(var1.var ^ var2);
         }
+        public static int16_t operator >>(int16_t var1, int var2)       /* >> */
+        {
+            return new int16_t(var1.var >> var2);
+        }
+        public static int16_t operator <<(int16_t var1, int var2)       /* << */
+        {
+            return new int16_t(var1.var << var2);
+        }
 
         /* Comparison */
         public static bool operator >(int16_t var1, int var2)           /* > */
@@ -3893,13 +5476,15 @@ namespace stdint
             return var.ToString();
         }
 
-        public void Increment()
+        public int16_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public int16_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
@@ -4135,22 +5720,38 @@ namespace stdint
         }
         #endregion
         #region uint16_t
+        /* Unary operators */
+        public static uint16_t operator ++(uint16_t obj)                /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static uint16_t operator --(uint16_t obj)                /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static uint16_t operator -(uint16_t obj)                 /* - (unary) */
+        {
+            return new uint16_t(-obj.var);
+        }
+        public static uint16_t operator +(uint16_t obj)                 /* + (unary) */
+        {
+            return new uint16_t(obj);
+        }
+        public static uint16_t operator ~(uint16_t obj)                 /* ~ */
+        {
+            return new uint16_t(~obj.var);
+        }
+
         /* Math */
         public static uint16_t operator +(uint16_t var1, uint16_t var2) /* + */
         {
             return new uint16_t(var1.var + var2.var);
         }
-        public static uint16_t operator ++(uint16_t obj)
-        {
-            return new uint16_t(obj.var++);
-        }
         public static uint16_t operator -(uint16_t var1, uint16_t var2) /* - */
         {
             return new uint16_t(var1.var - var2.var);
-        }
-        public static uint16_t operator --(uint16_t obj)
-        {
-            return new uint16_t(obj.var--);
         }
         public static uint16_t operator *(uint16_t var1, uint16_t var2) /* * */
         {
@@ -4807,6 +6408,14 @@ namespace stdint
         {
             return new uint16_t(var1.var ^ var2);
         }
+        public static uint16_t operator >>(uint16_t var1, int var2)     /* >> */
+        {
+            return new uint16_t(var1.var >> var2);
+        }
+        public static uint16_t operator <<(uint16_t var1, int var2)     /* << */
+        {
+            return new uint16_t(var1.var << var2);
+        }
 
         /* Comparison */
         public static bool operator >(uint16_t var1, int var2)          /* > */
@@ -5190,13 +6799,15 @@ namespace stdint
             return var.ToString();
         }
 
-        public void Increment()
+        public uint16_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public uint16_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
@@ -5499,22 +7110,38 @@ namespace stdint
         }
         #endregion
         #region int32_t
+        /* Unary operators */
+        public static int32_t operator ++(int32_t obj)                  /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static int32_t operator --(int32_t obj)                  /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static int32_t operator -(int32_t obj)                   /* - (unary) */
+        {
+            return new int32_t(-obj.var);
+        }
+        public static int32_t operator +(int32_t obj)                   /* + (unary) */
+        {
+            return new int32_t(obj);
+        }
+        public static int32_t operator ~(int32_t obj)                   /* ~ */
+        {
+            return new int32_t(~obj.var);
+        }
+
         /* Math */
         public static int32_t operator +(int32_t var1, int32_t var2)    /* + */
         {
             return new int32_t(var1.var + var2.var);
         }
-        public static int32_t operator ++(int32_t obj)
-        {
-            return new int32_t(obj.var++);
-        }
         public static int32_t operator -(int32_t var1, int32_t var2)    /* - */
         {
             return new int32_t(var1.var - var2.var);
-        }
-        public static int32_t operator --(int32_t obj)
-        {
-            return new int32_t(obj.var--);
         }
         public static int32_t operator *(int32_t var1, int32_t var2)    /* * */
         {
@@ -6104,6 +7731,14 @@ namespace stdint
         {
             return new int32_t(var1.var ^ var2);
         }
+        public static int32_t operator >>(int32_t var1, int var2)       /* >> */
+        {
+            return new int32_t(var1.var >> var2);
+        }
+        public static int32_t operator <<(int32_t var1, int var2)       /* << */
+        {
+            return new int32_t(var1.var << var2);
+        }
 
         /* Comparison */
         public static bool operator >(int32_t var1, int var2)           /* > */
@@ -6486,6 +8121,17 @@ namespace stdint
         {
             return var.ToString();
         }
+
+        public int32_t Increment()
+        {
+            this.var++;
+            return this;
+        }
+        public int32_t Decrement()
+        {
+            this.var--;
+            return this;
+        }
         #endregion
     }
 
@@ -6854,22 +8500,38 @@ namespace stdint
         }
         #endregion
         #region uint32_t
+        /* Unary operators */
+        public static uint32_t operator ++(uint32_t obj)                /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static uint32_t operator --(uint32_t obj)                /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static uint32_t operator -(uint32_t obj)                 /* - (unary) */
+        {
+            return new uint32_t(-obj.var);
+        }
+        public static uint32_t operator +(uint32_t obj)                 /* + (unary) */
+        {
+            return new uint32_t(obj);
+        }
+        public static uint32_t operator ~(uint32_t obj)                 /* ~ */
+        {
+            return new uint32_t(~obj.var);
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, uint32_t var2) /* + */
         {
             return new uint32_t(var1.var + var2.var);
         }
-        public static uint32_t operator ++(uint32_t obj)                /* ++ */
-        {
-            return new uint32_t(obj.var++);
-        }
         public static uint32_t operator -(uint32_t var1, uint32_t var2) /* - */
         {
             return new uint32_t(var1.var - var2.var);
-        }
-        public static uint32_t operator --(uint32_t obj)                /* -- */
-        {
-            return new uint32_t(obj.var--);
         }
         public static uint32_t operator *(uint32_t var1, uint32_t var2) /* * */
         {
@@ -7392,6 +9054,14 @@ namespace stdint
         {
             return new uint32_t(var1.var ^ var2);
         }
+        public static uint32_t operator >>(uint32_t var1, int var2)     /* >> */
+        {
+            return new uint32_t(var1.var >> var2);
+        }
+        public static uint32_t operator <<(uint32_t var1, int var2)     /* << */
+        {
+            return new uint32_t(var1.var << var2);
+        }
 
         /* Comparison */
         public static bool operator >(uint32_t var1, int var2)          /* > */
@@ -7775,13 +9445,15 @@ namespace stdint
             return base.GetHashCode();
         }
 
-        public void Increment()
+        public uint32_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public uint32_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
@@ -8223,22 +9895,38 @@ namespace stdint
         }
         #endregion
         #region int64_t
+        /* Unary operators */
+        public static int64_t operator ++(int64_t obj)                  /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static int64_t operator --(int64_t obj)                  /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static int64_t operator -(int64_t obj)                   /* - (unary) */
+        {
+            return new int64_t(-obj.var);
+        }
+        public static int64_t operator +(int64_t obj)                   /* + (unary) */
+        {
+            return new int64_t(obj);
+        }
+        public static int64_t operator ~(int64_t obj)                   /* ~ */
+        {
+            return new int64_t(~obj.var);
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, int64_t var2)    /* + */
         {
             return new int64_t(var1.var + var2.var);
         }
-        public static int64_t operator ++(int64_t obj)                  /* ++ */
-        {
-            return new int64_t(obj.var++);
-        }
         public static int64_t operator -(int64_t var1, int64_t var2)    /* - */
         {
             return new int64_t(var1.var - var2.var);
-        }
-        public static int64_t operator --(int64_t obj)                  /* -- */
-        {
-            return new int64_t(obj.var--);
         }
         public static int64_t operator *(int64_t var1, int64_t var2)    /* * */
         {
@@ -8720,6 +10408,14 @@ namespace stdint
         {
             return (var1.var != var2) ? true : false;
         }
+        public static int64_t operator >>(int64_t var1, int var2)       /* >> */
+        {
+            return new int64_t(var1.var >> var2);
+        }
+        public static int64_t operator <<(int64_t var1, int var2)       /* << */
+        {
+            return new int64_t(var1.var << var2);
+        }
         #endregion
         #region uint
         /* Assignment */
@@ -9077,13 +10773,15 @@ namespace stdint
             return base.GetHashCode();
         }
 
-        public void Increment()
+        public int64_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public int64_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
@@ -9587,22 +11285,38 @@ namespace stdint
         }
         #endregion
         #region uint64_t
+        /* Unary operators */
+        public static uint64_t operator ++(uint64_t obj)                /* ++ */
+        {
+            obj.Increment();
+            return obj;
+        }
+        public static uint64_t operator --(uint64_t obj)                /* -- */
+        {
+            obj.Decrement();
+            return obj;
+        }
+        public static uint64_t operator -(uint64_t obj)                 /* - (unary) */
+        {
+            return new uint64_t(0UL - obj.var);
+        }
+        public static uint64_t operator +(uint64_t obj)                 /* + (unary) */
+        {
+            return new uint64_t(obj);
+        }
+        public static uint64_t operator ~(uint64_t obj)                 /* ~ */
+        {
+            return new uint64_t(~obj.var);
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, uint64_t var2) /* + */
         {
             return new uint64_t(var1.var + var2.var);
         }
-        public static uint64_t operator ++(uint64_t obj)                /* ++ */
-        {
-            return new uint64_t(obj.var++);
-        }
         public static uint64_t operator -(uint64_t var1, uint64_t var2) /* - */
         {
             return new uint64_t(var1.var - var2.var);
-        }
-        public static uint64_t operator --(uint64_t obj)                /* -- */
-        {
-            return new uint64_t(obj.var--);
         }
         public static uint64_t operator *(uint64_t var1, uint64_t var2) /* * */
         {
@@ -9991,6 +11705,14 @@ namespace stdint
         {
             return new uint64_t(var1.var ^ (uint)var2);
         }
+        public static uint64_t operator >>(uint64_t var1, int var2)     /* >> */
+        {
+            return new uint64_t(var1.var >> var2);
+        }
+        public static uint64_t operator <<(uint64_t var1, int var2)     /* << */
+        {
+            return new uint64_t(var1.var << var2);
+        }
 
         /* Comparison */
         public static bool operator >(uint64_t var1, int var2)          /* > */
@@ -10374,13 +12096,15 @@ namespace stdint
             return base.GetHashCode();
         }
 
-        public void Increment()
+        public uint64_t Increment()
         {
             this.var++;
+            return this;
         }
-        public void Decrement()
+        public uint64_t Decrement()
         {
             this.var--;
+            return this;
         }
         #endregion
     }
