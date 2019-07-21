@@ -5,11 +5,8 @@
 
 /*****************************************************************************/
 /* TODO:
- * - Add, Substract, Divide, Multiply, Modulo, AND, OR, XOR, non-static
- *      - uint32_t
- *      - int64_t
- *      - uint64_t
  * - integral promotion and underlying types
+ * - Conversions
  * - test functionalities 
  * */
 
@@ -8113,11 +8110,11 @@ namespace stdint
         }
         public int16_t OR(float val)                                    /* Bitwise OR operation */
         {
-            throw new System.ArgumentException(System.String.Format("| operator cannot be applied with float parameter {0}", var2));
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with float parameter {0}", val));
         }
         public int16_t XOR(float val)                                   /* Bitwise XOR operation */
         {
-            throw new System.ArgumentException(System.String.Format("^ operator cannot be applied with float parameter {0}", var2));
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with float parameter {0}", val));
         }
 
         /* Math */
@@ -8213,11 +8210,11 @@ namespace stdint
         }
         public int16_t OR(double val)                                   /* Bitwise OR operation */
         {
-            throw new System.ArgumentException(System.String.Format("| operator cannot be applied with double parameter {0}", var2));
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with double parameter {0}", val));
         }
         public int16_t XOR(double val)                                  /* Bitwise XOR operation */
         {
-            throw new System.ArgumentException(System.String.Format("^ operator cannot be applied with double parameter {0}", var2));
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with double parameter {0}", val));
         }
 
         /* Math */
@@ -10419,6 +10416,48 @@ namespace stdint
             return new uint32_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(int8_t val)                                 /* Addition */
+        {
+            this.var = (uint)(this.var + val.var);
+            return this;
+        }
+        public uint32_t Substract(int8_t val)                           /* Substraction */
+        {
+            this.var = (uint)(this.var - val.var);
+            return this;
+        }
+        public uint32_t Multiply(int8_t val)                            /* Multiplication */
+        {
+            this.var = (uint)(this.var * val.var);
+            return this;
+        }
+        public uint32_t Divide(int8_t val)                              /* Division */
+        {
+            this.var = (uint)(this.var / val.var);
+            return this;
+        }
+        public uint32_t Modulo(int8_t val)                              /* Modulo */
+        {
+            this.var = (uint)(this.var % val.var);
+            return this;
+        }
+        public uint32_t AND(int8_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (uint)(this.var & val.var);
+            return this;
+        }
+        public uint32_t OR(int8_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (uint)(this.var | (byte)val.var);
+            return this;
+        }
+        public uint32_t XOR(int8_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (uint)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, int8_t var2)   /* + */
         {
@@ -10484,6 +10523,48 @@ namespace stdint
         public static implicit operator uint32_t(uint8_t obj)
         {
             return new uint32_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint32_t Add(uint8_t val)                                /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint32_t Substract(uint8_t val)                          /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint32_t Multiply(uint8_t val)                           /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint32_t Divide(uint8_t val)                             /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint32_t Modulo(uint8_t val)                             /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint32_t AND(uint8_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint32_t OR(uint8_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | (byte)val.var;
+            return this;
+        }
+        public uint32_t XOR(uint8_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
         }
 
         /* Math */
@@ -10553,6 +10634,48 @@ namespace stdint
             return new uint32_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(int16_t val)                                /* Addition */
+        {
+            this.var = (uint)(this.var + val.var);
+            return this;
+        }
+        public uint32_t Substract(int16_t val)                          /* Substraction */
+        {
+            this.var = (uint)(this.var - val.var);
+            return this;
+        }
+        public uint32_t Multiply(int16_t val)                           /* Multiplication */
+        {
+            this.var = (uint)(this.var * val.var);
+            return this;
+        }
+        public uint32_t Divide(int16_t val)                             /* Division */
+        {
+            this.var = (uint)(this.var / val.var);
+            return this;
+        }
+        public uint32_t Modulo(int16_t val)                             /* Modulo */
+        {
+            this.var = (uint)(this.var % val.var);
+            return this;
+        }
+        public uint32_t AND(int16_t val)                                /* Bitwise AND operation */
+        {
+            this.var = (uint)(this.var & val.var);
+            return this;
+        }
+        public uint32_t OR(int16_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = (uint)(this.var | (ushort)val.var);
+            return this;
+        }
+        public uint32_t XOR(int16_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = (uint)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, int16_t var2)  /* + */
         {
@@ -10620,6 +10743,48 @@ namespace stdint
             return new uint32_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(uint16_t val)                               /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint32_t Substract(uint16_t val)                         /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint32_t Multiply(uint16_t val)                          /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint32_t Divide(uint16_t val)                            /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint32_t Modulo(uint16_t val)                            /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint32_t AND(uint16_t val)                               /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint32_t OR(uint16_t val)                                /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public uint32_t XOR(uint16_t val)                               /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, uint16_t var2) /* + */
         {
@@ -10685,6 +10850,48 @@ namespace stdint
         public static implicit operator uint32_t(int32_t obj)
         {
             return new uint32_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint32_t Add(int32_t val)                                /* Addition */
+        {
+            this.var = (uint)(this.var + val.var);
+            return this;
+        }
+        public uint32_t Substract(int32_t val)                          /* Substraction */
+        {
+            this.var = (uint)(this.var - val.var);
+            return this;
+        }
+        public uint32_t Multiply(int32_t val)                           /* Multiplication */
+        {
+            this.var = (uint)(this.var * val.var);
+            return this;
+        }
+        public uint32_t Divide(int32_t val)                             /* Division */
+        {
+            this.var = (uint)(this.var / val.var);
+            return this;
+        }
+        public uint32_t Modulo(int32_t val)                             /* Modulo */
+        {
+            this.var = (uint)(this.var % val.var);
+            return this;
+        }
+        public uint32_t AND(int32_t val)                                /* Bitwise AND operation */
+        {
+            this.var = (uint)(this.var & val.var);
+            return this;
+        }
+        public uint32_t OR(int32_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = (uint)(this.var | (uint)val.var);
+            return this;
+        }
+        public uint32_t XOR(int32_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = (uint)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -10772,6 +10979,48 @@ namespace stdint
             return new uint32_t(~obj.var);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(uint32_t val)                               /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint32_t Substract(uint32_t val)                         /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint32_t Multiply(uint32_t val)                          /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint32_t Divide(uint32_t val)                            /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint32_t Modulo(uint32_t val)                            /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint32_t AND(uint32_t val)                               /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint32_t OR(uint32_t val)                                /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public uint32_t XOR(uint32_t val)                               /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, uint32_t var2) /* + */
         {
@@ -10839,6 +11088,48 @@ namespace stdint
             return new uint32_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(int64_t val)                                /* Addition */
+        {
+            this.var = (uint)(this.var + val.var);
+            return this;
+        }
+        public uint32_t Substract(int64_t val)                          /* Substraction */
+        {
+            this.var = (uint)(this.var - val.var);
+            return this;
+        }
+        public uint32_t Multiply(int64_t val)                           /* Multiplication */
+        {
+            this.var = (uint)(this.var * val.var);
+            return this;
+        }
+        public uint32_t Divide(int64_t val)                             /* Division */
+        {
+            this.var = (uint)(this.var / val.var);
+            return this;
+        }
+        public uint32_t Modulo(int64_t val)                             /* Modulo */
+        {
+            this.var = (uint)(this.var % val.var);
+            return this;
+        }
+        public uint32_t AND(int64_t val)                                /* Bitwise AND operation */
+        {
+            this.var = (uint)(this.var & val.var);
+            return this;
+        }
+        public uint32_t OR(int64_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = (uint)(this.var | (ulong)val.var);
+            return this;
+        }
+        public uint32_t XOR(int64_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = (uint)(this.var ^ val.var);
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, int64_t var2)  /* + */
         {
@@ -10904,6 +11195,48 @@ namespace stdint
         public static implicit operator uint32_t(uint64_t obj)
         {
             return new uint32_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint32_t Add(uint64_t val)                               /* Addition */
+        {
+            this.var = (uint)(this.var + val.var);
+            return this;
+        }
+        public uint32_t Substract(uint64_t val)                         /* Substraction */
+        {
+            this.var = (uint)(this.var - val.var);
+            return this;
+        }
+        public uint32_t Multiply(uint64_t val)                          /* Multiplication */
+        {
+            this.var = (uint)(this.var * val.var);
+            return this;
+        }
+        public uint32_t Divide(uint64_t val)                            /* Division */
+        {
+            this.var = (uint)(this.var / val.var);
+            return this;
+        }
+        public uint32_t Modulo(uint64_t val)                            /* Modulo */
+        {
+            this.var = (uint)(this.var % val.var);
+            return this;
+        }
+        public uint32_t AND(uint64_t val)                               /* Bitwise AND operation */
+        {
+            this.var = (uint)(this.var & val.var);
+            return this;
+        }
+        public uint32_t OR(uint64_t val)                                /* Bitwise OR operation */
+        {
+            this.var = (uint)(this.var | val.var);
+            return this;
+        }
+        public uint32_t XOR(uint64_t val)                               /* Bitwise XOR operation */
+        {
+            this.var = (uint)(this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -10981,6 +11314,48 @@ namespace stdint
             return new uint32_t(var);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(sbyte val)                                  /* Addition */
+        {
+            this.var += (uint)val;
+            return this;
+        }
+        public uint32_t Substract(sbyte val)                            /* Substraction */
+        {
+            this.var -= (uint)val;
+            return this;
+        }
+        public uint32_t Multiply(sbyte val)                             /* Multiplication */
+        {
+            this.var *= (uint)val;
+            return this;
+        }
+        public uint32_t Divide(sbyte val)                               /* Division */
+        {
+            this.var /= (uint)val;
+            return this;
+        }
+        public uint32_t Modulo(sbyte val)                               /* Modulo */
+        {
+            this.var %= (uint)val;
+            return this;
+        }
+        public uint32_t AND(sbyte val)                                  /* Bitwise AND operation */
+        {
+            this.var &= (uint)val;
+            return this;
+        }
+        public uint32_t OR(sbyte val)                                   /* Bitwise OR operation */
+        {
+            this.var |= (byte)val;
+            return this;
+        }
+        public uint32_t XOR(sbyte val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= (uint)val;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, sbyte var2)    /* + */
         {
@@ -11051,6 +11426,48 @@ namespace stdint
         public static implicit operator uint32_t(byte var)
         {
             return new uint32_t(var);
+        }
+
+        /* Non-static math operations */
+        public uint32_t Add(byte val)                                   /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t Substract(byte val)                             /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t Multiply(byte val)                              /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t Divide(byte val)                                /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t Modulo(byte val)                                /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t AND(byte val)                                   /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t OR(byte val)                                    /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t XOR(byte val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
         }
 
         /* Math */
@@ -11125,6 +11542,48 @@ namespace stdint
             return new uint32_t(var);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(short val)                                  /* Addition */
+        {                                                               
+            this.var += (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Substract(short val)                            /* Substraction */
+        {                                                               
+            this.var -= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Multiply(short val)                             /* Multiplication */
+        {                                                               
+            this.var *= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Divide(short val)                               /* Division */
+        {                                                               
+            this.var /= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Modulo(short val)                               /* Modulo */
+        {                                                               
+            this.var %= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t AND(short val)                                  /* Bitwise AND operation */
+        {                                                               
+            this.var &= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t OR(short val)                                   /* Bitwise OR operation */
+        {                                                               
+            this.var |= (ushort)val;                                            
+            return this;                                                
+        }                                                               
+        public uint32_t XOR(short val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= (uint)val;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, short var2)    /* + */
         {
@@ -11197,6 +11656,48 @@ namespace stdint
             return new uint32_t(var);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(ushort val)                                 /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public uint32_t Substract(ushort val)                           /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public uint32_t Multiply(ushort val)                            /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public uint32_t Divide(ushort val)                              /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public uint32_t Modulo(ushort val)                              /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public uint32_t AND(ushort val)                                 /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public uint32_t OR(ushort val)                                  /* Bitwise OR operation */
+        {
+            this.var |= val;
+            return this;
+        }
+        public uint32_t XOR(ushort val)                                 /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, ushort var2)   /* + */
         {
@@ -11267,6 +11768,48 @@ namespace stdint
         public static implicit operator uint32_t(int var)
         {
             return new uint32_t(var);
+        }
+
+        /* Non-static math operations */
+        public uint32_t Add(int val)                                    /* Addition */
+        {                                                               
+            this.var += (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Substract(int val)                              /* Substraction */
+        {                                                               
+            this.var -= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Multiply(int val)                               /* Multiplication */
+        {                                                               
+            this.var *= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Divide(int val)                                 /* Division */
+        {                                                               
+            this.var /= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Modulo(int val)                                 /* Modulo */
+        {                                                               
+            this.var %= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t AND(int val)                                    /* Bitwise AND operation */
+        {                                                               
+            this.var &= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t OR(int val)                                     /* Bitwise OR operation */
+        {                                                               
+            this.var |= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t XOR(int val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (uint)val;
+            return this;
         }
 
         /* Math */
@@ -11349,6 +11892,48 @@ namespace stdint
             return new uint32_t(var);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(uint val)                                   /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public uint32_t Substract(uint val)                             /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public uint32_t Multiply(uint val)                              /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public uint32_t Divide(uint val)                                /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public uint32_t Modulo(uint val)                                /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public uint32_t AND(uint val)                                   /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public uint32_t OR(uint val)                                    /* Bitwise OR operation */
+        {
+            this.var |= val;
+            return this;
+        }
+        public uint32_t XOR(uint val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, uint var2)     /* + */
         {
@@ -11419,6 +12004,48 @@ namespace stdint
         public static implicit operator uint32_t(long var)
         {
             return new uint32_t(var);
+        }
+
+        /* Non-static math operations */
+        public uint32_t Add(long val)                                   /* Addition */
+        {                                                               
+            this.var += (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Substract(long val)                             /* Substraction */
+        {                                                               
+            this.var -= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Multiply(long val)                              /* Multiplication */
+        {                                                               
+            this.var *= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Divide(long val)                                /* Division */
+        {                                                               
+            this.var /= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t Modulo(long val)                                /* Modulo */
+        {                                                               
+            this.var %= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t AND(long val)                                   /* Bitwise AND operation */
+        {                                                               
+            this.var &= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint32_t OR(long val)                                    /* Bitwise OR operation */
+        {
+            this.var = (uint)(this.var | val); 
+            return this;                                                
+        }                                                               
+        public uint32_t XOR(long val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= (uint)val;
+            return this;
         }
 
         /* Math */
@@ -11493,6 +12120,48 @@ namespace stdint
             return new uint32_t(var);
         }
 
+        /* Non-static math operations */
+        public uint32_t Add(ulong val)                                  /* Addition */
+        {
+            this.var += (uint)val;
+            return this;
+        }
+        public uint32_t Substract(ulong val)                            /* Substraction */
+        {
+            this.var -= (uint)val;
+            return this;
+        }
+        public uint32_t Multiply(ulong val)                             /* Multiplication */
+        {
+            this.var *= (uint)val;
+            return this;
+        }
+        public uint32_t Divide(ulong val)                               /* Division */
+        {
+            this.var /= (uint)val;
+            return this;
+        }
+        public uint32_t Modulo(ulong val)                               /* Modulo */
+        {
+            this.var %= (uint)val;
+            return this;
+        }
+        public uint32_t AND(ulong val)                                  /* Bitwise AND operation */
+        {
+            this.var &= (uint)val;
+            return this;
+        }
+        public uint32_t OR(ulong val)                                   /* Bitwise OR operation */
+        {
+            this.var |= (uint)val;
+            return this;
+        }
+        public uint32_t XOR(ulong val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= (uint)val;
+            return this;
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, ulong var2)    /* + */
         {
@@ -11555,6 +12224,45 @@ namespace stdint
         #endregion
 
         #region float
+        /* Non-static math operations */
+        public uint32_t Add(float val)                                  /* Addition */
+        {
+            this.var += System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Substract(float val)                            /* Substraction */
+        {
+            this.var -= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Multiply(float val)                             /* Multiplication */
+        {
+            this.var *= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Divide(float val)                               /* Division */
+        {
+            this.var /= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Modulo(float val)                               /* Modulo */
+        {
+            this.var %= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t AND(float val)                                  /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with float parameter {0}", val));
+        }
+        public uint32_t OR(float val)                                   /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with float parameter {0}", val));
+        }
+        public uint32_t XOR(float val)                                  /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with float parameter {0}", val));
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, float var2)    /* + */
         {
@@ -11616,6 +12324,45 @@ namespace stdint
         }
         #endregion
         #region double
+        /* Non-static math operations */
+        public uint32_t Add(double val)                                 /* Addition */
+        {
+            this.var += System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Substract(double val)                           /* Substraction */
+        {
+            this.var -= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Multiply(double val)                            /* Multiplication */
+        {
+            this.var *= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Divide(double val)                              /* Division */
+        {
+            this.var /= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t Modulo(double val)                              /* Modulo */
+        {
+            this.var %= System.Convert.ToUInt32(System.Math.Truncate(val));
+            return this;
+        }
+        public uint32_t AND(double val)                                 /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with double parameter {0}", val));
+        }
+        public uint32_t OR(double val)                                  /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with double parameter {0}", val));
+        }
+        public uint32_t XOR(double val)                                 /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with double parameter {0}", val));
+        }
+
         /* Math */
         public static uint32_t operator +(uint32_t var1, double var2)   /* + */
         {
@@ -11742,6 +12489,48 @@ namespace stdint
             return new int64_t(obj);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(int8_t val)                                  /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public int64_t Substract(int8_t val)                            /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public int64_t Multiply(int8_t val)                             /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public int64_t Divide(int8_t val)                               /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public int64_t Modulo(int8_t val)                               /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public int64_t AND(int8_t val)                                  /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public int64_t OR(int8_t val)                                   /* Bitwise OR operation */
+        {
+            this.var = this.var | (byte)val.var;
+            return this;
+        }
+        public int64_t XOR(int8_t val)                                  /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, int8_t var2)     /* + */
         {                                                               
@@ -11807,6 +12596,48 @@ namespace stdint
         public static implicit operator int64_t(uint8_t obj)
         {
             return new int64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(uint8_t val)                                 /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public int64_t Substract(uint8_t val)                           /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public int64_t Multiply(uint8_t val)                            /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public int64_t Divide(uint8_t val)                              /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public int64_t Modulo(uint8_t val)                              /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public int64_t AND(uint8_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public int64_t OR(uint8_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = this.var | (byte)val.var;
+            return this;
+        }
+        public int64_t XOR(uint8_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
         }
 
         /* Math */
@@ -11876,6 +12707,48 @@ namespace stdint
             return new int64_t(obj);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(int16_t val)                                 /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public int64_t Substract(int16_t val)                           /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public int64_t Multiply(int16_t val)                            /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public int64_t Divide(int16_t val)                              /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public int64_t Modulo(int16_t val)                              /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public int64_t AND(int16_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public int64_t OR(int16_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = this.var | (ushort)val.var;
+            return this;
+        }
+        public int64_t XOR(int16_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, int16_t var2)    /* + */
         {
@@ -11943,6 +12816,48 @@ namespace stdint
             return new int64_t(obj);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(uint16_t val)                                /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public int64_t Substract(uint16_t val)                          /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public int64_t Multiply(uint16_t val)                           /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public int64_t Divide(uint16_t val)                             /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public int64_t Modulo(uint16_t val)                             /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public int64_t AND(uint16_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public int64_t OR(uint16_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public int64_t XOR(uint16_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, uint16_t var2)   /* + */
         {
@@ -12008,6 +12923,48 @@ namespace stdint
         public static implicit operator int64_t(int32_t obj)
         {
             return new int64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(int32_t val)                                 /* Addition */
+        {                                                               
+            this.var = this.var + val.var;                              
+            return this;                                                
+        }                                                               
+        public int64_t Substract(int32_t val)                           /* Substraction */
+        {                                                               
+            this.var = this.var - val.var;                              
+            return this;                                                
+        }                                                               
+        public int64_t Multiply(int32_t val)                            /* Multiplication */
+        {                                                               
+            this.var = this.var * val.var;                              
+            return this;                                                
+        }                                                               
+        public int64_t Divide(int32_t val)                              /* Division */
+        {                                                               
+            this.var = this.var / val.var;                              
+            return this;                                                
+        }                                                               
+        public int64_t Modulo(int32_t val)                              /* Modulo */
+        {                                                               
+            this.var = this.var % val.var;                              
+            return this;                                                
+        }                                                               
+        public int64_t AND(int32_t val)                                 /* Bitwise AND operation */
+        {                                                               
+            this.var = this.var & val.var;                              
+            return this;                                                
+        }                                                               
+        public int64_t OR(int32_t val)                                  /* Bitwise OR operation */
+        {                                                               
+            this.var = this.var | (uint)val.var;                        
+            return this;                                                
+        }                                                               
+        public int64_t XOR(int32_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
         }
 
         /* Math */
@@ -12080,6 +13037,48 @@ namespace stdint
         public static implicit operator int64_t(uint32_t obj)
         {
             return new int64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(uint32_t val)                                /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public int64_t Substract(uint32_t val)                          /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public int64_t Multiply(uint32_t val)                           /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public int64_t Divide(uint32_t val)                             /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public int64_t Modulo(uint32_t val)                             /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public int64_t AND(uint32_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public int64_t OR(uint32_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public int64_t XOR(uint32_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
         }
 
         /* Math */
@@ -12167,6 +13166,48 @@ namespace stdint
             return new int64_t(~obj.var);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(int64_t val)                                 /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public int64_t Substract(int64_t val)                           /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public int64_t Multiply(int64_t val)                            /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public int64_t Divide(int64_t val)                              /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public int64_t Modulo(int64_t val)                              /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public int64_t AND(int64_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public int64_t OR(int64_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public int64_t XOR(int64_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, int64_t var2)    /* + */
         {
@@ -12232,6 +13273,48 @@ namespace stdint
         public static implicit operator int64_t(uint64_t obj)
         {
             return new int64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(uint64_t val)                                 /* Addition */
+        {
+            this.var = (long)((ulong)this.var + val.var);
+            return this;
+        }
+        public int64_t Substract(uint64_t val)                           /* Substraction */
+        {
+            this.var = (long)((ulong)this.var - val.var);
+            return this;
+        }
+        public int64_t Multiply(uint64_t val)                            /* Multiplication */
+        {
+            this.var = (long)((ulong)this.var * val.var);
+            return this;
+        }
+        public int64_t Divide(uint64_t val)                              /* Division */
+        {
+            this.var = (long)((ulong)this.var / val.var);
+            return this;
+        }
+        public int64_t Modulo(uint64_t val)                              /* Modulo */
+        {
+            this.var = (long)((ulong)this.var % val.var);
+            return this;
+        }
+        public int64_t AND(uint64_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = (long)((ulong)this.var & val.var);
+            return this;
+        }
+        public int64_t OR(uint64_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = (long)((ulong)this.var | val.var);
+            return this;
+        }
+        public int64_t XOR(uint64_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = (long)((ulong)this.var ^ val.var);
+            return this;
         }
 
         /* Math */
@@ -12309,6 +13392,48 @@ namespace stdint
             return new int64_t(var);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(sbyte val)                                   /* Addition */
+        {                                                               
+            this.var += val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t Substract(sbyte val)                             /* Substraction */
+        {                                                               
+            this.var -= val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t Multiply(sbyte val)                              /* Multiplication */
+        {                                                               
+            this.var *= val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t Divide(sbyte val)                                /* Division */
+        {                                                               
+            this.var /= val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t Modulo(sbyte val)                                /* Modulo */
+        {                                                               
+            this.var %= val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t AND(sbyte val)                                   /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t OR(sbyte val)                                    /* Bitwise OR operation */
+        {                                                               
+            this.var |= (byte)val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t XOR(sbyte val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, sbyte var2)      /* + */
         {
@@ -12379,6 +13504,48 @@ namespace stdint
         public static implicit operator int64_t(byte var)
         {
             return new int64_t(var);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(byte val)                                    /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Substract(byte val)                              /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Multiply(byte val)                               /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Divide(byte val)                                 /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Modulo(byte val)                                 /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t AND(byte val)                                    /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t OR(byte val)                                     /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t XOR(byte val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
         }
 
         /* Math */
@@ -12453,6 +13620,48 @@ namespace stdint
             return new int64_t(var);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(short val)                                   /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public int64_t Substract(short val)                             /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public int64_t Multiply(short val)                              /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public int64_t Divide(short val)                                /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public int64_t Modulo(short val)                                /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public int64_t AND(short val)                                   /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public int64_t OR(short val)                                    /* Bitwise OR operation */
+        {
+            this.var |= (ushort)val;
+            return this;
+        }
+        public int64_t XOR(short val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, short var2)      /* + */
         {
@@ -12525,6 +13734,48 @@ namespace stdint
             return new int64_t(var);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(ushort val)                                  /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public int64_t Substract(ushort val)                            /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public int64_t Multiply(ushort val)                             /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public int64_t Divide(ushort val)                               /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public int64_t Modulo(ushort val)                               /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public int64_t AND(ushort val)                                  /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public int64_t OR(ushort val)                                   /* Bitwise OR operation */
+        {
+            this.var |= val;
+            return this;
+        }
+        public int64_t XOR(ushort val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, ushort var2)     /* + */
         {
@@ -12595,6 +13846,48 @@ namespace stdint
         public static implicit operator int64_t(int var)
         {
             return new int64_t(var);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(int val)                                     /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Substract(int val)                               /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Multiply(int val)                                /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Divide(int val)                                  /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Modulo(int val)                                  /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t AND(int val)                                     /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t OR(int val)                                      /* Bitwise OR operation */
+        {                                                               
+            this.var |= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t XOR(int val)                                     /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
         }
 
         /* Math */
@@ -12677,6 +13970,48 @@ namespace stdint
             return new int64_t(var);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(uint val)                                    /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Substract(uint val)                              /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Multiply(uint val)                               /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Divide(uint val)                                 /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Modulo(uint val)                                 /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t AND(uint val)                                    /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t OR(uint val)                                     /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                      
+            return this;                                                
+        }                                                               
+        public int64_t XOR(uint val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, uint var2)       /* + */
         {
@@ -12747,6 +14082,48 @@ namespace stdint
         public static implicit operator int64_t(long var)
         {
             return new int64_t(var);
+        }
+
+        /* Non-static math operations */
+        public int64_t Add(long val)                                    /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Substract(long val)                              /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Multiply(long val)                               /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Divide(long val)                                 /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t Modulo(long val)                                 /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t AND(long val)                                    /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t OR(long val)                                     /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                            
+            return this;                                                
+        }                                                               
+        public int64_t XOR(long val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
         }
 
         /* Math */
@@ -12821,6 +14198,48 @@ namespace stdint
             return new int64_t(var);
         }
 
+        /* Non-static math operations */
+        public int64_t Add(ulong val)                                   /* Addition */
+        {
+            this.var += (long)val;
+            return this;
+        }
+        public int64_t Substract(ulong val)                             /* Substraction */
+        {
+            this.var -= (long)val;
+            return this;
+        }
+        public int64_t Multiply(ulong val)                              /* Multiplication */
+        {
+            this.var *= (long)val;
+            return this;
+        }
+        public int64_t Divide(ulong val)                                /* Division */
+        {
+            this.var /= (long)val;
+            return this;
+        }
+        public int64_t Modulo(ulong val)                                /* Modulo */
+        {
+            this.var %= (long)val;
+            return this;
+        }
+        public int64_t AND(ulong val)                                   /* Bitwise AND operation */
+        {
+            this.var &= (long)val;
+            return this;
+        }
+        public int64_t OR(ulong val)                                    /* Bitwise OR operation */
+        {
+            this.var = (long)((ulong)this.var | val);
+            return this;
+        }
+        public int64_t XOR(ulong val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= (long)val;
+            return this;
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, ulong var2)      /* + */
         {
@@ -12883,6 +14302,45 @@ namespace stdint
         #endregion
 
         #region float
+        /* Non-static math operations */
+        public int64_t Add(float val)                                   /* Addition */
+        {
+            this.var += System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Substract(float val)                             /* Substraction */
+        {
+            this.var -= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Multiply(float val)                              /* Multiplication */
+        {
+            this.var *= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Divide(float val)                                /* Division */
+        {
+            this.var /= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Modulo(float val)                                /* Modulo */
+        {
+            this.var %= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t AND(float val)                                   /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with float parameter {0}", val));
+        }
+        public int64_t OR(float val)                                    /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with float parameter {0}", val));
+        }
+        public int64_t XOR(float val)                                   /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with float parameter {0}", val));
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, float var2)      /* + */
         {
@@ -12944,6 +14402,45 @@ namespace stdint
         }
         #endregion
         #region double
+        /* Non-static math operations */
+        public int64_t Add(double val)                                  /* Addition */
+        {
+            this.var += System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Substract(double val)                            /* Substraction */
+        {
+            this.var -= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Multiply(double val)                             /* Multiplication */
+        {
+            this.var *= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Divide(double val)                               /* Division */
+        {
+            this.var /= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t Modulo(double val)                               /* Modulo */
+        {
+            this.var %= System.Convert.ToInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public int64_t AND(double val)                                  /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with double parameter {0}", val));
+        }
+        public int64_t OR(double val)                                   /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with double parameter {0}", val));
+        }
+        public int64_t XOR(double val)                                  /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with double parameter {0}", val));
+        }
+
         /* Math */
         public static int64_t operator +(int64_t var1, double var2)     /* + */
         {
@@ -13070,6 +14567,48 @@ namespace stdint
             return new uint64_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(int8_t val)                                 /* Addition */
+        {
+            this.var = this.var + (byte)val.var;
+            return this;
+        }
+        public uint64_t Substract(int8_t val)                           /* Substraction */
+        {
+            this.var = this.var - (byte)val.var;
+            return this;
+        }
+        public uint64_t Multiply(int8_t val)                            /* Multiplication */
+        {
+            this.var = this.var * (byte)val.var;
+            return this;
+        }
+        public uint64_t Divide(int8_t val)                              /* Division */
+        {
+            this.var = this.var / (byte)val.var;
+            return this;
+        }
+        public uint64_t Modulo(int8_t val)                              /* Modulo */
+        {
+            this.var = this.var % (byte)val.var;
+            return this;
+        }
+        public uint64_t AND(int8_t val)                                 /* Bitwise AND operation */
+        {
+            this.var = this.var & (byte)val.var;
+            return this;
+        }
+        public uint64_t OR(int8_t val)                                  /* Bitwise OR operation */
+        {
+            this.var = this.var | (byte)val.var;
+            return this;
+        }
+        public uint64_t XOR(int8_t val)                                 /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ (byte)val.var;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, int8_t var2)   /* + */
         {                                                               
@@ -13135,6 +14674,48 @@ namespace stdint
         public static implicit operator uint64_t(uint8_t obj)
         {
             return new uint64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint64_t Add(uint8_t val)                                /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint64_t Substract(uint8_t val)                          /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint64_t Multiply(uint8_t val)                           /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint64_t Divide(uint8_t val)                             /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint64_t Modulo(uint8_t val)                             /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint64_t AND(uint8_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint64_t OR(uint8_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public uint64_t XOR(uint8_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
         }
 
         /* Math */
@@ -13204,6 +14785,48 @@ namespace stdint
             return new uint64_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(int16_t val)                                /* Addition */
+        {
+            this.var = this.var + (ushort)val.var;
+            return this;
+        }
+        public uint64_t Substract(int16_t val)                          /* Substraction */
+        {
+            this.var = this.var - (ushort)val.var;
+            return this;
+        }
+        public uint64_t Multiply(int16_t val)                           /* Multiplication */
+        {
+            this.var = this.var * (ushort)val.var;
+            return this;
+        }
+        public uint64_t Divide(int16_t val)                             /* Division */
+        {
+            this.var = this.var / (ushort)val.var;
+            return this;
+        }
+        public uint64_t Modulo(int16_t val)                             /* Modulo */
+        {
+            this.var = this.var % (ushort)val.var;
+            return this;
+        }
+        public uint64_t AND(int16_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & (ushort)val.var;
+            return this;
+        }
+        public uint64_t OR(int16_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | (ushort)val.var;
+            return this;
+        }
+        public uint64_t XOR(int16_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ (ushort)val.var;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, int16_t var2)  /* + */
         {
@@ -13269,6 +14892,48 @@ namespace stdint
         public static implicit operator uint64_t(uint16_t obj)
         {
             return new uint64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint64_t Add(uint16_t val)                               /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint64_t Substract(uint16_t val)                         /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint64_t Multiply(uint16_t val)                          /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint64_t Divide(uint16_t val)                            /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint64_t Modulo(uint16_t val)                            /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint64_t AND(uint16_t val)                               /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint64_t OR(uint16_t val)                                /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public uint64_t XOR(uint16_t val)                               /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
         }
 
         /* Math */
@@ -13338,6 +15003,48 @@ namespace stdint
             return new uint64_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(int32_t val)                                /* Addition */
+        {
+            this.var = this.var + (uint)val.var;
+            return this;
+        }
+        public uint64_t Substract(int32_t val)                          /* Substraction */
+        {
+            this.var = this.var - (uint)val.var;
+            return this;
+        }
+        public uint64_t Multiply(int32_t val)                           /* Multiplication */
+        {
+            this.var = this.var * (uint)val.var;
+            return this;
+        }
+        public uint64_t Divide(int32_t val)                             /* Division */
+        {
+            this.var = this.var / (uint)val.var;
+            return this;
+        }
+        public uint64_t Modulo(int32_t val)                             /* Modulo */
+        {
+            this.var = this.var % (uint)val.var;
+            return this;
+        }
+        public uint64_t AND(int32_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & (uint)val.var;
+            return this;
+        }
+        public uint64_t OR(int32_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | (uint)val.var;
+            return this;
+        }
+        public uint64_t XOR(int32_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ (uint)val.var;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, int32_t var2)  /* + */
         {
@@ -13405,6 +15112,48 @@ namespace stdint
             return new uint64_t(obj);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(uint32_t val)                               /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint64_t Substract(uint32_t val)                         /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint64_t Multiply(uint32_t val)                          /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint64_t Divide(uint32_t val)                            /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint64_t Modulo(uint32_t val)                            /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint64_t AND(uint32_t val)                               /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint64_t OR(uint32_t val)                                /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public uint64_t XOR(uint32_t val)                               /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, uint32_t var2) /* + */
         {                                                               
@@ -13470,6 +15219,48 @@ namespace stdint
         public static implicit operator uint64_t(int64_t obj)
         {
             return new uint64_t(obj);
+        }
+
+        /* Non-static math operations */
+        public uint64_t Add(int64_t val)                                /* Addition */
+        {
+            this.var = this.var + (ulong)val.var;
+            return this;
+        }
+        public uint64_t Substract(int64_t val)                          /* Substraction */
+        {
+            this.var = this.var - (ulong)val.var;
+            return this;
+        }
+        public uint64_t Multiply(int64_t val)                           /* Multiplication */
+        {
+            this.var = this.var * (ulong)val.var;
+            return this;
+        }
+        public uint64_t Divide(int64_t val)                             /* Division */
+        {
+            this.var = this.var / (ulong)val.var;
+            return this;
+        }
+        public uint64_t Modulo(int64_t val)                             /* Modulo */
+        {
+            this.var = this.var % (ulong)val.var;
+            return this;
+        }
+        public uint64_t AND(int64_t val)                                /* Bitwise AND operation */
+        {
+            this.var = this.var & (ulong)val.var;
+            return this;
+        }
+        public uint64_t OR(int64_t val)                                 /* Bitwise OR operation */
+        {
+            this.var = this.var | (ulong)val.var;
+            return this;
+        }
+        public uint64_t XOR(int64_t val)                                /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ (ulong)val.var;
+            return this;
         }
 
         /* Math */
@@ -13557,6 +15348,48 @@ namespace stdint
             return new uint64_t(~obj.var);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(uint64_t val)                               /* Addition */
+        {
+            this.var = this.var + val.var;
+            return this;
+        }
+        public uint64_t Substract(uint64_t val)                         /* Substraction */
+        {
+            this.var = this.var - val.var;
+            return this;
+        }
+        public uint64_t Multiply(uint64_t val)                          /* Multiplication */
+        {
+            this.var = this.var * val.var;
+            return this;
+        }
+        public uint64_t Divide(uint64_t val)                            /* Division */
+        {
+            this.var = this.var / val.var;
+            return this;
+        }
+        public uint64_t Modulo(uint64_t val)                            /* Modulo */
+        {
+            this.var = this.var % val.var;
+            return this;
+        }
+        public uint64_t AND(uint64_t val)                               /* Bitwise AND operation */
+        {
+            this.var = this.var & val.var;
+            return this;
+        }
+        public uint64_t OR(uint64_t val)                                /* Bitwise OR operation */
+        {
+            this.var = this.var | val.var;
+            return this;
+        }
+        public uint64_t XOR(uint64_t val)                               /* Bitwise XOR operation */
+        {
+            this.var = this.var ^ val.var;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, uint64_t var2) /* + */
         {
@@ -13632,6 +15465,48 @@ namespace stdint
             return new uint64_t(var);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(sbyte val)                                  /* Addition */
+        {
+            this.var += (byte)val;
+            return this;
+        }
+        public uint64_t Substract(sbyte val)                            /* Substraction */
+        {
+            this.var -= (byte)val;
+            return this;
+        }
+        public uint64_t Multiply(sbyte val)                             /* Multiplication */
+        {
+            this.var *= (byte)val;
+            return this;
+        }
+        public uint64_t Divide(sbyte val)                               /* Division */
+        {
+            this.var /= (byte)val;
+            return this;
+        }
+        public uint64_t Modulo(sbyte val)                               /* Modulo */
+        {
+            this.var %= (byte)val;
+            return this;
+        }
+        public uint64_t AND(sbyte val)                                  /* Bitwise AND operation */
+        {
+            this.var &= (byte)val;
+            return this;
+        }
+        public uint64_t OR(sbyte val)                                   /* Bitwise OR operation */
+        {
+            this.var |= (byte)val;
+            return this;
+        }
+        public uint64_t XOR(sbyte val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= (byte)val;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, sbyte var2)    /* + */
         {
@@ -13702,6 +15577,48 @@ namespace stdint
         public static implicit operator uint64_t(byte var)
         {
             return new uint64_t(var);
+        }
+
+        /* Non-static math operations */
+        public uint64_t Add(byte val)                                  /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public uint64_t Substract(byte val)                            /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public uint64_t Multiply(byte val)                             /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public uint64_t Divide(byte val)                               /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public uint64_t Modulo(byte val)                               /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public uint64_t AND(byte val)                                  /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public uint64_t OR(byte val)                                   /* Bitwise OR operation */
+        {
+            this.var |= val;
+            return this;
+        }
+        public uint64_t XOR(byte val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
         }
 
         /* Math */
@@ -13776,6 +15693,48 @@ namespace stdint
             return new uint64_t(var);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(short val)                                  /* Addition */
+        {
+            this.var += (ushort)val;
+            return this;
+        }
+        public uint64_t Substract(short val)                            /* Substraction */
+        {
+            this.var -= (ushort)val;
+            return this;
+        }
+        public uint64_t Multiply(short val)                             /* Multiplication */
+        {
+            this.var *= (ushort)val;
+            return this;
+        }
+        public uint64_t Divide(short val)                               /* Division */
+        {
+            this.var /= (ushort)val;
+            return this;
+        }
+        public uint64_t Modulo(short val)                               /* Modulo */
+        {
+            this.var %= (ushort)val;
+            return this;
+        }
+        public uint64_t AND(short val)                                  /* Bitwise AND operation */
+        {
+            this.var &= (ushort)val;
+            return this;
+        }
+        public uint64_t OR(short val)                                   /* Bitwise OR operation */
+        {
+            this.var |= (ushort)val;
+            return this;
+        }
+        public uint64_t XOR(short val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= (ushort)val;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, short var2)    /* + */
         {
@@ -13848,6 +15807,48 @@ namespace stdint
             return new uint64_t(var);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(ushort val)                                 /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public uint64_t Substract(ushort val)                           /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public uint64_t Multiply(ushort val)                            /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public uint64_t Divide(ushort val)                              /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public uint64_t Modulo(ushort val)                              /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public uint64_t AND(ushort val)                                 /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public uint64_t OR(ushort val)                                  /* Bitwise OR operation */
+        {
+            this.var |= val;
+            return this;
+        }
+        public uint64_t XOR(ushort val)                                 /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, ushort var2)   /* + */
         {
@@ -13918,6 +15919,48 @@ namespace stdint
         public static implicit operator uint64_t(int var)
         {
             return new uint64_t(var);
+        }
+
+        /* Non-static math operations */
+        public uint64_t Add(int val)                                    /* Addition */
+        {                                                               
+            this.var += (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t Substract(int val)                              /* Substraction */
+        {                                                               
+            this.var -= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t Multiply(int val)                               /* Multiplication */
+        {                                                               
+            this.var *= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t Divide(int val)                                 /* Division */
+        {                                                               
+            this.var /= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t Modulo(int val)                                 /* Modulo */
+        {                                                               
+            this.var %= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t AND(int val)                                    /* Bitwise AND operation */
+        {                                                               
+            this.var &= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t OR(int val)                                     /* Bitwise OR operation */
+        {                                                               
+            this.var |= (uint)val;                                      
+            return this;                                                
+        }                                                               
+        public uint64_t XOR(int val)                                    /* Bitwise XOR operation */
+        {
+            this.var ^= (uint)val;
+            return this;
         }
 
         /* Math */
@@ -14000,6 +16043,48 @@ namespace stdint
             return new uint64_t(var);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(uint val)                                   /* Addition */
+        {                                                               
+            this.var += val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t Substract(uint val)                             /* Substraction */
+        {                                                               
+            this.var -= val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t Multiply(uint val)                              /* Multiplication */
+        {                                                               
+            this.var *= val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t Divide(uint val)                                /* Division */
+        {                                                               
+            this.var /= val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t Modulo(uint val)                                /* Modulo */
+        {                                                               
+            this.var %= val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t AND(uint val)                                   /* Bitwise AND operation */
+        {                                                               
+            this.var &= val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t OR(uint val)                                    /* Bitwise OR operation */
+        {                                                               
+            this.var |= val;                                            
+            return this;                                                
+        }                                                               
+        public uint64_t XOR(uint val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, uint var2)     /* + */
         {
@@ -14070,6 +16155,48 @@ namespace stdint
         public static implicit operator uint64_t(long var)
         {
             return new uint64_t(var);
+        }
+
+        /* Non-static math operations */
+        public uint64_t Add(long val)                                   /* Addition */
+        {                                                               
+            this.var += (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t Substract(long val)                             /* Substraction */
+        {                                                               
+            this.var -= (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t Multiply(long val)                              /* Multiplication */
+        {                                                               
+            this.var *= (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t Divide(long val)                                /* Division */
+        {                                                               
+            this.var /= (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t Modulo(long val)                                /* Modulo */
+        {                                                               
+            this.var %= (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t AND(long val)                                   /* Bitwise AND operation */
+        {                                                               
+            this.var &= (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t OR(long val)                                    /* Bitwise OR operation */
+        {                                                               
+            this.var |= (ulong)val;                                     
+            return this;                                                
+        }                                                               
+        public uint64_t XOR(long val)                                   /* Bitwise XOR operation */
+        {
+            this.var ^= (ulong)val;
+            return this;
         }
 
         /* Math */
@@ -14144,6 +16271,48 @@ namespace stdint
             return new uint64_t(var);
         }
 
+        /* Non-static math operations */
+        public uint64_t Add(ulong val)                                  /* Addition */
+        {
+            this.var += val;
+            return this;
+        }
+        public uint64_t Substract(ulong val)                            /* Substraction */
+        {
+            this.var -= val;
+            return this;
+        }
+        public uint64_t Multiply(ulong val)                             /* Multiplication */
+        {
+            this.var *= val;
+            return this;
+        }
+        public uint64_t Divide(ulong val)                               /* Division */
+        {
+            this.var /= val;
+            return this;
+        }
+        public uint64_t Modulo(ulong val)                               /* Modulo */
+        {
+            this.var %= val;
+            return this;
+        }
+        public uint64_t AND(ulong val)                                  /* Bitwise AND operation */
+        {
+            this.var &= val;
+            return this;
+        }
+        public uint64_t OR(ulong val)                                   /* Bitwise OR operation */
+        {
+            this.var |= val;
+            return this;
+        }
+        public uint64_t XOR(ulong val)                                  /* Bitwise XOR operation */
+        {
+            this.var ^= val;
+            return this;
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, ulong var2)    /* + */
         {
@@ -14206,6 +16375,45 @@ namespace stdint
         #endregion
 
         #region float
+        /* Non-static math operations */
+        public uint64_t Add(float val)                                  /* Addition */
+        {
+            this.var += System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Substract(float val)                            /* Substraction */
+        {
+            this.var -= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Multiply(float val)                             /* Multiplication */
+        {
+            this.var *= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Divide(float val)                               /* Division */
+        {
+            this.var /= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Modulo(float val)                               /* Modulo */
+        {
+            this.var %= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t AND(float val)                                  /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with float parameter {0}", val));
+        }
+        public uint64_t OR(float val)                                   /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with float parameter {0}", val));
+        }
+        public uint64_t XOR(float val)                                  /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with float parameter {0}", val));
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, float var2)    /* + */
         {
@@ -14267,6 +16475,45 @@ namespace stdint
         }
         #endregion
         #region double
+        /* Non-static math operations */
+        public uint64_t Add(double val)                                 /* Addition */
+        {
+            this.var += System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Substract(double val)                           /* Substraction */
+        {
+            this.var -= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Multiply(double val)                            /* Multiplication */
+        {
+            this.var *= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Divide(double val)                              /* Division */
+        {
+            this.var /= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t Modulo(double val)                              /* Modulo */
+        {
+            this.var %= System.Convert.ToUInt64(System.Math.Truncate(val));
+            return this;
+        }
+        public uint64_t AND(double val)                                 /* Bitwise AND operation */
+        {
+            throw new System.ArgumentException(System.String.Format("AND operation cannot be applied with double parameter {0}", val));
+        }
+        public uint64_t OR(double val)                                  /* Bitwise OR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("OR operation cannot be applied with double parameter {0}", val));
+        }
+        public uint64_t XOR(double val)                                 /* Bitwise XOR operation */
+        {
+            throw new System.ArgumentException(System.String.Format("XOR operation cannot be applied with double parameter {0}", val));
+        }
+
         /* Math */
         public static uint64_t operator +(uint64_t var1, double var2)   /* + */
         {
