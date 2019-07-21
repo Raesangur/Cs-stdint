@@ -6,37 +6,37 @@
 /*****************************************************************************/
 /* TODO:
  * - integral promotion and underlying types
- * - Conversions
  * - test functionalities 
  * */
 
 namespace stdint
 {
     /****************************** int8_t ***********************************/
-    class int8_t
+    public class int8_t
     {
         public sbyte var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public int8_t()                 { var = 0; }
-        public int8_t(byte value)       { var = (sbyte)value; }
-        public int8_t(sbyte value)      { var = value; }
-        public int8_t(short value)      { var = (sbyte)value; }
-        public int8_t(ushort value)     { var = (sbyte)value; }
-        public int8_t(int value)        { var = (sbyte)value; }
-        public int8_t(uint value)       { var = (sbyte)value; }
-        public int8_t(long value)       { var = (sbyte)value; }
-        public int8_t(ulong value)      { var = (sbyte)value; }
-        public int8_t(float value)      { var = System.Convert.ToSByte(System.Math.Truncate(value)); }
-        public int8_t(double value)     { var = System.Convert.ToSByte(System.Math.Truncate(value)); }
-        public int8_t(int8_t value)     { var = value.var; }
-        public int8_t(uint8_t value)    { var = (sbyte)value.var; }
-        public int8_t(int16_t value)    { var = (sbyte)value.var; }
-        public int8_t(uint16_t value)   { var = (sbyte)value.var; }
-        public int8_t(int32_t value)    { var = (sbyte)value.var; }
-        public int8_t(uint32_t value)   { var = (sbyte)value.var; }
-        public int8_t(int64_t value)    { var = (sbyte)value.var; }
-        public int8_t(uint64_t value)   { var = (sbyte)value.var; }
+        public int8_t()                 { var = 0; Convert = new convert_t(this); }
+        public int8_t(byte value)       { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(sbyte value)      { var = value; Convert = new convert_t(this); }
+        public int8_t(short value)      { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(ushort value)     { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(int value)        { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(uint value)       { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(long value)       { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(ulong value)      { var = (sbyte)value; Convert = new convert_t(this); }
+        public int8_t(float value)      { var = System.Convert.ToSByte(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int8_t(double value)     { var = System.Convert.ToSByte(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int8_t(int8_t value)     { var = value.var; Convert = new convert_t(this); }
+        public int8_t(uint8_t value)    { var = (sbyte)value.var; Convert = new convert_t(this); }
+        public int8_t(int16_t value)    { var = (sbyte)value.var; Convert = new convert_t(this); }
+        public int8_t(uint16_t value)   { var = (sbyte)value.var; Convert = new convert_t(this); }
+        public int8_t(int32_t value)    { var = (sbyte)value.var; Convert = new convert_t(this); }
+        public int8_t(uint32_t value)   { var = (sbyte)value.var; Convert = new convert_t(this); }
+        public int8_t(int64_t value)    { var = (sbyte)value.var; Convert = new convert_t(this); }
+        public int8_t(uint64_t value)   { var = (sbyte)value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -2083,34 +2083,131 @@ namespace stdint
             this.var--;
             return this;
         }
+
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(int8_t int8)                               /* Conversion constructor */
+            {
+                obj= int8;
+            }
+            int8_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /****************************** uint8_t **********************************/
-    class uint8_t
+    public class uint8_t
     {
         public byte var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public uint8_t()                { var = 0; }
-        public uint8_t(byte value)      { var = value; }
-        public uint8_t(sbyte value)     { var = (byte)value; }
-        public uint8_t(short value)     { var = (byte)value; }
-        public uint8_t(ushort value)    { var = (byte)value; }
-        public uint8_t(int value)       { var = (byte)value; }
-        public uint8_t(uint value)      { var = (byte)value; }
-        public uint8_t(long value)      { var = (byte)value; }
-        public uint8_t(ulong value)     { var = (byte)value; }
-        public uint8_t(float value)     { var = System.Convert.ToByte(System.Math.Truncate(value)); }
-        public uint8_t(double value)    { var = System.Convert.ToByte(System.Math.Truncate(value)); }
-        public uint8_t(int8_t value)    { var = (byte)value.var; }
-        public uint8_t(uint8_t value)   { var = value.var; }
-        public uint8_t(int16_t value)   { var = (byte)value.var; }
-        public uint8_t(uint16_t value)  { var = (byte)value.var; }
-        public uint8_t(int32_t value)   { var = (byte)value.var; }
-        public uint8_t(uint32_t value)  { var = (byte)value.var; }
-        public uint8_t(int64_t value)   { var = (byte)value.var; }
-        public uint8_t(uint64_t value)  { var = (byte)value.var; }
+        public uint8_t()                { var = 0; Convert = new convert_t(this); }
+        public uint8_t(byte value)      { var = value; Convert = new convert_t(this); }
+        public uint8_t(sbyte value)     { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(short value)     { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(ushort value)    { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(int value)       { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(uint value)      { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(long value)      { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(ulong value)     { var = (byte)value; Convert = new convert_t(this); }
+        public uint8_t(float value)     { var = System.Convert.ToByte(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint8_t(double value)    { var = System.Convert.ToByte(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint8_t(int8_t value)    { var = (byte)value.var; Convert = new convert_t(this); }
+        public uint8_t(uint8_t value)   { var = value.var; Convert = new convert_t(this); }
+        public uint8_t(int16_t value)   { var = (byte)value.var; Convert = new convert_t(this); }
+        public uint8_t(uint16_t value)  { var = (byte)value.var; Convert = new convert_t(this); }
+        public uint8_t(int32_t value)   { var = (byte)value.var; Convert = new convert_t(this); }
+        public uint8_t(uint32_t value)  { var = (byte)value.var; Convert = new convert_t(this); }
+        public uint8_t(int64_t value)   { var = (byte)value.var; Convert = new convert_t(this); }
+        public uint8_t(uint64_t value)  { var = (byte)value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -4157,34 +4254,130 @@ namespace stdint
             this.var--;
             return this;
         }
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(uint8_t uint8)                             /* Conversion constructor */
+            {
+                obj = uint8;
+            }
+            uint8_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /****************************** int16_t **********************************/
-    class int16_t
+    public class int16_t
     {
         public short var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public int16_t()                { var = 0; }
-        public int16_t(byte value)      { var = (short)value; }
-        public int16_t(sbyte value)     { var = (short)value; }
-        public int16_t(short value)     { var = value; }
-        public int16_t(ushort value)    { var = (short)value; }
-        public int16_t(int value)       { var = (short)value; }
-        public int16_t(uint value)      { var = (short)value; }
-        public int16_t(long value)      { var = (short)value; }
-        public int16_t(ulong value)     { var = (short)value; }
-        public int16_t(float value)     { var = System.Convert.ToInt16(System.Math.Truncate(value)); }
-        public int16_t(double value)    { var = System.Convert.ToInt16(System.Math.Truncate(value)); }
-        public int16_t(int8_t value)    { var = (short)value.var; }
-        public int16_t(uint8_t value)   { var = (short)value.var; }
-        public int16_t(int16_t value)   { var = value.var; }
-        public int16_t(uint16_t value)  { var = (short)value.var; }
-        public int16_t(int32_t value)   { var = (short)value.var; }
-        public int16_t(uint32_t value)  { var = (short)value.var; }
-        public int16_t(int64_t value)   { var = (short)value.var; }
-        public int16_t(uint64_t value)  { var = (short)value.var; }
+        public int16_t()                { var = 0; Convert = new convert_t(this); }
+        public int16_t(byte value)      { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(sbyte value)     { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(short value)     { var = value; Convert = new convert_t(this); }
+        public int16_t(ushort value)    { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(int value)       { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(uint value)      { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(long value)      { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(ulong value)     { var = (short)value; Convert = new convert_t(this); }
+        public int16_t(float value)     { var = System.Convert.ToInt16(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int16_t(double value)    { var = System.Convert.ToInt16(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int16_t(int8_t value)    { var = (short)value.var; Convert = new convert_t(this); }
+        public int16_t(uint8_t value)   { var = (short)value.var; Convert = new convert_t(this); }
+        public int16_t(int16_t value)   { var = value.var; Convert = new convert_t(this); }
+        public int16_t(uint16_t value)  { var = (short)value.var; Convert = new convert_t(this); }
+        public int16_t(int32_t value)   { var = (short)value.var; Convert = new convert_t(this); }
+        public int16_t(uint32_t value)  { var = (short)value.var; Convert = new convert_t(this); }
+        public int16_t(int64_t value)   { var = (short)value.var; Convert = new convert_t(this); }
+        public int16_t(uint64_t value)  { var = (short)value.var; Convert = new convert_t(this); }
         #endregion
 
 
@@ -6231,34 +6424,131 @@ namespace stdint
             this.var--;
             return this;
         }
+
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(int16_t int16)                             /* Conversion constructor */
+            {
+                obj = int16;
+            }
+            int16_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /***************************** uint16_t **********************************/
-    class uint16_t
+    public class uint16_t
     {
         public ushort var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public uint16_t()               { var = 0; }
-        public uint16_t(sbyte value)    { var = (ushort)value; }
-        public uint16_t(byte value)     { var = (ushort)value; }
-        public uint16_t(short value)    { var = (ushort)value; }
-        public uint16_t(ushort value)   { var = value; }
-        public uint16_t(int value)      { var = (ushort)value; }
-        public uint16_t(uint value)     { var = (ushort)value; }
-        public uint16_t(long value)     { var = (ushort)value; }
-        public uint16_t(ulong value)    { var = (ushort)value; }
-        public uint16_t(float value)    { var = System.Convert.ToUInt16(System.Math.Truncate(value)); }
-        public uint16_t(double value)   { var = System.Convert.ToUInt16(System.Math.Truncate(value)); }
-        public uint16_t(int8_t value)   { var = (ushort)value.var; }
-        public uint16_t(uint8_t value)  { var = (ushort)value.var; }
-        public uint16_t(int16_t value)  { var = (ushort)value.var; }
-        public uint16_t(uint16_t value) { var = value.var; }
-        public uint16_t(int32_t value)  { var = (ushort)value.var; }
-        public uint16_t(uint32_t value) { var = (ushort)value.var; }
-        public uint16_t(int64_t value)  { var = (ushort)value.var; }
-        public uint16_t(uint64_t value) { var = (ushort)value.var; }
+        public uint16_t()               { var = 0; Convert = new convert_t(this); }
+        public uint16_t(sbyte value)    { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(byte value)     { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(short value)    { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(ushort value)   { var = value; Convert = new convert_t(this); }
+        public uint16_t(int value)      { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(uint value)     { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(long value)     { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(ulong value)    { var = (ushort)value; Convert = new convert_t(this); }
+        public uint16_t(float value)    { var = System.Convert.ToUInt16(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint16_t(double value)   { var = System.Convert.ToUInt16(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint16_t(int8_t value)   { var = (ushort)value.var; Convert = new convert_t(this); }
+        public uint16_t(uint8_t value)  { var = (ushort)value.var; Convert = new convert_t(this); }
+        public uint16_t(int16_t value)  { var = (ushort)value.var; Convert = new convert_t(this); }
+        public uint16_t(uint16_t value) { var = value.var; Convert = new convert_t(this); }
+        public uint16_t(int32_t value)  { var = (ushort)value.var; Convert = new convert_t(this); }
+        public uint16_t(uint32_t value) { var = (ushort)value.var; Convert = new convert_t(this); }
+        public uint16_t(int64_t value)  { var = (ushort)value.var; Convert = new convert_t(this); }
+        public uint16_t(uint64_t value) { var = (ushort)value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -8304,34 +8594,131 @@ namespace stdint
             this.var--;
             return this;
         }
+
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(uint16_t uint16)                           /* Conversion constructor */
+            {
+                obj = uint16;
+            }
+            uint16_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /****************************** int32_t **********************************/
-    class int32_t
+    public class int32_t
     {
         public int var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public int32_t()                { var = 0; }
-        public int32_t(byte value)      { var = (int)value; }
-        public int32_t(sbyte value)     { var = (int)value; }
-        public int32_t(short value)     { var = (int)value; }
-        public int32_t(ushort value)    { var = (int)value; }
-        public int32_t(int value)       { var = value; }
-        public int32_t(uint value)      { var = (int)value; }
-        public int32_t(long value)      { var = (int)value; }
-        public int32_t(ulong value)     { var = (int)value; }
-        public int32_t(float value)     { var = System.Convert.ToInt32(System.Math.Truncate(value)); }
-        public int32_t(double value)    { var = System.Convert.ToInt32(System.Math.Truncate(value)); }
-        public int32_t(int8_t value)    { var = (int)value.var; }
-        public int32_t(uint8_t value)   { var = (int)value.var; }
-        public int32_t(int16_t value)   { var = (int)value.var; }
-        public int32_t(uint16_t value)  { var = (int)value.var; }
-        public int32_t(int32_t value)   { var = value.var; }
-        public int32_t(uint32_t value)  { var = (int)value.var; }
-        public int32_t(int64_t value)   { var = (int)value.var; }
-        public int32_t(uint64_t value)  { var = (int)value.var; }
+        public int32_t()                { var = 0; Convert = new convert_t(this); }
+        public int32_t(byte value)      { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(sbyte value)     { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(short value)     { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(ushort value)    { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(int value)       { var = value; Convert = new convert_t(this); }
+        public int32_t(uint value)      { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(long value)      { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(ulong value)     { var = (int)value; Convert = new convert_t(this); }
+        public int32_t(float value)     { var = System.Convert.ToInt32(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int32_t(double value)    { var = System.Convert.ToInt32(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int32_t(int8_t value)    { var = (int)value.var; Convert = new convert_t(this); }
+        public int32_t(uint8_t value)   { var = (int)value.var; Convert = new convert_t(this); }
+        public int32_t(int16_t value)   { var = (int)value.var; Convert = new convert_t(this); }
+        public int32_t(uint16_t value)  { var = (int)value.var; Convert = new convert_t(this); }
+        public int32_t(int32_t value)   { var = value.var; Convert = new convert_t(this); }
+        public int32_t(uint32_t value)  { var = (int)value.var; Convert = new convert_t(this); }
+        public int32_t(int64_t value)   { var = (int)value.var; Convert = new convert_t(this); }
+        public int32_t(uint64_t value)  { var = (int)value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -10377,34 +10764,131 @@ namespace stdint
             this.var--;
             return this;
         }
+
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(int32_t int32)                             /* Conversion constructor */
+            {
+                obj = int32;
+            }
+            int32_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /****************************** uint32_t **********************************/
-    class uint32_t
+    public class uint32_t
     {
         public uint var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public uint32_t()               { var = 0; }
-        public uint32_t(byte value)     { var = (uint)value; }
-        public uint32_t(sbyte value)    { var = (uint)value; }
-        public uint32_t(short value)    { var = (uint)value; }
-        public uint32_t(ushort value)   { var = (uint)value; }
-        public uint32_t(int value)      { var = (uint)value; }
-        public uint32_t(uint value)     { var = value; }
-        public uint32_t(long value)     { var = (uint)value; }
-        public uint32_t(ulong value)    { var = (uint)value; }
-        public uint32_t(float value)    { var = System.Convert.ToUInt32(System.Math.Truncate(value)); }
-        public uint32_t(double value)   { var = System.Convert.ToUInt32(System.Math.Truncate(value)); }
-        public uint32_t(int8_t value)   { var = (uint)value.var; }
-        public uint32_t(uint8_t value)  { var = (uint)value.var; }
-        public uint32_t(int16_t value)  { var = (uint)value.var; }
-        public uint32_t(uint16_t value) { var = (uint)value.var; }
-        public uint32_t(int32_t value)  { var = (uint)value.var; }
-        public uint32_t(uint32_t value) { var = value.var; }
-        public uint32_t(int64_t value)  { var = (uint)value.var; }
-        public uint32_t(uint64_t value) { var = (uint)value.var; }
+        public uint32_t()               { var = 0; Convert = new convert_t(this); }
+        public uint32_t(byte value)     { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(sbyte value)    { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(short value)    { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(ushort value)   { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(int value)      { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(uint value)     { var = value; Convert = new convert_t(this); }
+        public uint32_t(long value)     { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(ulong value)    { var = (uint)value; Convert = new convert_t(this); }
+        public uint32_t(float value)    { var = System.Convert.ToUInt32(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint32_t(double value)   { var = System.Convert.ToUInt32(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint32_t(int8_t value)   { var = (uint)value.var; Convert = new convert_t(this); }
+        public uint32_t(uint8_t value)  { var = (uint)value.var; Convert = new convert_t(this); }
+        public uint32_t(int16_t value)  { var = (uint)value.var; Convert = new convert_t(this); }
+        public uint32_t(uint16_t value) { var = (uint)value.var; Convert = new convert_t(this); }
+        public uint32_t(int32_t value)  { var = (uint)value.var; Convert = new convert_t(this); }
+        public uint32_t(uint32_t value) { var = value.var; Convert = new convert_t(this); }
+        public uint32_t(int64_t value)  { var = (uint)value.var; Convert = new convert_t(this); }
+        public uint32_t(uint64_t value) { var = (uint)value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -12450,34 +12934,131 @@ namespace stdint
             this.var--;
             return this;
         }
+
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(uint32_t uint32)                           /* Conversion constructor */
+            {
+                obj = uint32;
+            }
+            uint32_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /****************************** int64_t **********************************/
-    class int64_t
+    public class int64_t
     {
         public long var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public int64_t()                { var = 0; }
-        public int64_t(byte value)      { var = (long)value; }
-        public int64_t(sbyte value)     { var = (long)value; }
-        public int64_t(short value)     { var = (long)value; }
-        public int64_t(ushort value)    { var = (long)value; }
-        public int64_t(int value)       { var = (long)value; }
-        public int64_t(uint value)      { var = (long)value; }
-        public int64_t(long value)      { var = value; }
-        public int64_t(ulong value)     { var = (long)value; }
-        public int64_t(float value)     { var = System.Convert.ToInt64(System.Math.Truncate(value)); }
-        public int64_t(double value)    { var = System.Convert.ToInt64(System.Math.Truncate(value)); }
-        public int64_t(int8_t value)    { var = (long)value.var; }
-        public int64_t(uint8_t value)   { var = (long)value.var; }
-        public int64_t(int16_t value)   { var = (long)value.var; }
-        public int64_t(uint16_t value)  { var = (long)value.var; }
-        public int64_t(int32_t value)   { var = (long)value.var; }
-        public int64_t(uint32_t value)  { var = (long)value.var; }
-        public int64_t(int64_t value)   { var = value.var; }
-        public int64_t(uint64_t value)  { var = (long)value.var; }
+        public int64_t()                { var = 0; Convert = new convert_t(this); }
+        public int64_t(byte value)      { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(sbyte value)     { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(short value)     { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(ushort value)    { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(int value)       { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(uint value)      { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(long value)      { var = value; Convert = new convert_t(this); }
+        public int64_t(ulong value)     { var = (long)value; Convert = new convert_t(this); }
+        public int64_t(float value)     { var = System.Convert.ToInt64(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int64_t(double value)    { var = System.Convert.ToInt64(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public int64_t(int8_t value)    { var = (long)value.var; Convert = new convert_t(this); }
+        public int64_t(uint8_t value)   { var = (long)value.var; Convert = new convert_t(this); }
+        public int64_t(int16_t value)   { var = (long)value.var; Convert = new convert_t(this); }
+        public int64_t(uint16_t value)  { var = (long)value.var; Convert = new convert_t(this); }
+        public int64_t(int32_t value)   { var = (long)value.var; Convert = new convert_t(this); }
+        public int64_t(uint32_t value)  { var = (long)value.var; Convert = new convert_t(this); }
+        public int64_t(int64_t value)   { var = value.var; Convert = new convert_t(this); }
+        public int64_t(uint64_t value)  { var = (long)value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -14528,34 +15109,130 @@ namespace stdint
             this.var--;
             return this;
         }
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(int64_t int64)                             /* Conversion constructor */
+            {
+                obj = int64;
+            }
+            int64_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 
     /****************************** uint64_t **********************************/
-    class uint64_t
+    public class uint64_t
     {
         public ulong var = 0;
+        public convert_t Convert;
 
         #region Constructors
-        public uint64_t()               { var = 0; }
-        public uint64_t(byte value)     { var = (ulong)value; }
-        public uint64_t(sbyte value)    { var = (ulong)value; }
-        public uint64_t(short value)    { var = (ulong)value; }
-        public uint64_t(ushort value)   { var = (ulong)value; }
-        public uint64_t(int value)      { var = (ulong)value; }
-        public uint64_t(uint value)     { var = (ulong)value; }
-        public uint64_t(long value)     { var = (ulong)value; }
-        public uint64_t(ulong value)    { var = value; }
-        public uint64_t(float value)    { var = System.Convert.ToUInt64(System.Math.Truncate(value)); }
-        public uint64_t(double value)   { var = System.Convert.ToUInt64(System.Math.Truncate(value)); }
-        public uint64_t(int8_t value)   { var = (ulong)value.var; }
-        public uint64_t(uint8_t value)  { var = (ulong)value.var; }
-        public uint64_t(int16_t value)  { var = (ulong)value.var; }
-        public uint64_t(uint16_t value) { var = (ulong)value.var; }
-        public uint64_t(int32_t value)  { var = (ulong)value.var; }
-        public uint64_t(uint32_t value) { var = (ulong)value.var; }
-        public uint64_t(int64_t value)  { var = (ulong)value.var; }
-        public uint64_t(uint64_t value) { var = value.var; }
+        public uint64_t()               { var = 0; Convert = new convert_t(this); }
+        public uint64_t(byte value)     { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(sbyte value)    { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(short value)    { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(ushort value)   { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(int value)      { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(uint value)     { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(long value)     { var = (ulong)value; Convert = new convert_t(this); }
+        public uint64_t(ulong value)    { var = value; Convert = new convert_t(this); }
+        public uint64_t(float value)    { var = System.Convert.ToUInt64(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint64_t(double value)   { var = System.Convert.ToUInt64(System.Math.Truncate(value)); Convert = new convert_t(this); }
+        public uint64_t(int8_t value)   { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(uint8_t value)  { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(int16_t value)  { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(uint16_t value) { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(int32_t value)  { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(uint32_t value) { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(int64_t value)  { var = (ulong)value.var; Convert = new convert_t(this); }
+        public uint64_t(uint64_t value) { var = value.var; Convert = new convert_t(this); }
         #endregion
 
         #region types
@@ -16601,6 +17278,102 @@ namespace stdint
             this.var--;
             return this;
         }
+
+        #region conversions
+        public class convert_t
+        {
+            public convert_t(uint64_t uint64)                           /* Conversion constructor */
+            {
+                obj = uint64;
+            }
+            uint64_t obj;
+
+
+            public int8_t To_int8_t()                                   /* int8_t */
+            {
+                return new int8_t(obj);
+            }
+            public uint8_t To_uint8_t()                                 /* uint8_t */
+            {
+                return new uint8_t(obj);
+            }
+            public int16_t To_int16_t()                                 /* int16_t */
+            {
+                return new int16_t(obj);
+            }
+            public uint16_t To_uint16_t()                               /* uint16_t */
+            {
+                return new uint16_t(obj);
+            }
+            public int32_t To_int32_t()                                 /* int32_t */
+            {
+                return new int32_t(obj);
+            }
+            public uint32_t To_uint32_t()                               /* uint32_t */
+            {
+                return new uint32_t(obj);
+            }
+            public int64_t To_int64_t()                                 /* int64_t */
+            {
+                return new int64_t(obj);
+            }
+            public uint64_t To_uint64_t()                               /* uint64_t */
+            {
+                return new uint64_t(obj);
+            }
+
+            public sbyte To_sbyte()                                     /* sbyte */
+            {
+                return System.Convert.ToSByte(obj.var);
+            }
+            public byte To_byte()                                       /* byte */
+            {
+                return System.Convert.ToByte(obj.var);
+            }
+            public short To_short()                                     /* short */
+            {
+                return System.Convert.ToInt16(obj.var);
+            }
+            public ushort To_ushort()                                   /* ushort */
+            {
+                return System.Convert.ToUInt16(obj.var);
+            }
+            public int To_int()                                         /* int */
+            {
+                return System.Convert.ToInt32(obj.var);
+            }
+            public uint To_uint()                                       /* uint */
+            {
+                return System.Convert.ToUInt32(obj.var);
+            }
+            public long To_long()                                       /* long */
+            {
+                return System.Convert.ToInt64(obj.var);
+            }
+            public ulong To_ulong()                                     /* ulong */
+            {
+                return System.Convert.ToUInt64(obj.var);
+            }
+            public float To_float()                                     /* float */
+            {
+                return System.Convert.ToSingle(obj.var);
+            }
+            public double To_double()                                   /* double */
+            {
+                return System.Convert.ToDouble(obj.var);
+            }
+
+
+            public string To_string()                                   /* string */
+            {
+                return obj.ToString();
+            }
+            public override string ToString()                           /* string */
+            {
+                return obj.ToString();
+            }
+        }
+        #endregion
         #endregion
     }
 }
