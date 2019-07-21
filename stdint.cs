@@ -4380,7 +4380,6 @@ namespace stdint
         public int16_t(uint64_t value)  { var = (short)value.var; Convert = new convert_t(this); }
         #endregion
 
-
         #region types
         #region new types
         #region int8_t
